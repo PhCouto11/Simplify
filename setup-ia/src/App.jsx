@@ -1,92 +1,109 @@
 import { useState, useCallback, useEffect } from 'react'
-import { supabase } from './lib/supabase' // Importando a conexão que você acabou de criar
+import { supabase } from './lib/supabase'
 import Header from './components/Header'
 import BottomNav from './components/BottomNav'
 import Home from './pages/Home'
 import Loja from './pages/Loja'
+import Auth from './pages/Auth'
 
 export default function App() {
+  const [user, setUser] = useState(null)
+  const [authLoading, setAuthLoading] = useState(true)
   const [page, setPage] = useState('home')
-  const [wishlist, setWishlist] = useState({}) // Agora começa vazio até puxar do banco
+  const [wishlist, setWishlist] = useState({})
 
-  // ─── Buscar dados do Supabase ao carregar o app ───
+  // ─── Auth: verificar sessão e escutar mudanças ───
   useEffect(() => {
-    fetchWishlist()
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null)
+      setAuthLoading(false)
+    })
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null)
+    })
+
+    return () => subscription.unsubscribe()
   }, [])
 
-  async function fetchWishlist() {
-    // Busca todos os itens da tabela 'wishlist'
+  // ─── Buscar wishlist quando o usuário logar ───
+  useEffect(() => {
+    if (user) {
+      fetchWishlist(user.id)
+    } else {
+      setWishlist({})
+    }
+  }, [user])
+
+  async function fetchWishlist(userId) {
     const { data, error } = await supabase
       .from('wishlist')
       .select('*')
+      .eq('user_id', userId)
 
-    if (error) {
-      console.error('Erro ao buscar dados do Supabase:', error)
-      return
-    }
+    if (error) { console.error('Erro ao buscar wishlist:', error); return }
 
-    // Transforma o array que vem do banco de volta para o formato de objeto que seus componentes usam
     if (data) {
-      const loadedWishlist = {}
-      data.forEach(item => {
-        loadedWishlist[item.product_id] = { owned: item.owned }
-      })
-      setWishlist(loadedWishlist)
+      const loaded = {}
+      data.forEach(item => { loaded[item.product_id] = { owned: item.owned } })
+      setWishlist(loaded)
     }
   }
 
-  // ─── Ações da Wishlist integradas ao banco ───
+  // ─── Ações da Wishlist ───
   const toggleWishlist = useCallback(async (productId) => {
+    if (!user) return
     setWishlist(prev => {
       const next = { ...prev }
       const isRemoving = !!next[productId]
-
       if (isRemoving) {
-        // Remove do banco e do estado local
-        supabase.from('wishlist').delete().eq('product_id', productId).then()
+        supabase.from('wishlist').delete().eq('product_id', productId).eq('user_id', user.id).then()
         delete next[productId]
       } else {
-        // Adiciona no banco e no estado local
-        supabase.from('wishlist').insert([{ product_id: productId, owned: false }]).then()
+        supabase.from('wishlist').insert([{ product_id: productId, owned: false, user_id: user.id }]).then()
         next[productId] = { owned: false }
       }
       return next
     })
-  }, [])
+  }, [user])
 
   const toggleOwned = useCallback(async (productId) => {
+    if (!user) return
     setWishlist(prev => {
-      const currentStatus = prev[productId]?.owned
-      const newStatus = !currentStatus
-
-      // Atualiza o status "owned" no banco
-      supabase.from('wishlist').update({ owned: newStatus }).eq('product_id', productId).then()
-
-      return {
-        ...prev,
-        [productId]: { owned: newStatus }
-      }
+      const newStatus = !prev[productId]?.owned
+      supabase.from('wishlist').update({ owned: newStatus }).eq('product_id', productId).eq('user_id', user.id).then()
+      return { ...prev, [productId]: { owned: newStatus } }
     })
-  }, [])
+  }, [user])
 
   const removeFromWishlist = useCallback(async (productId) => {
+    if (!user) return
     setWishlist(prev => {
       const next = { ...prev }
-      
-      // Remove do banco
-      supabase.from('wishlist').delete().eq('product_id', productId).then()
-      
+      supabase.from('wishlist').delete().eq('product_id', productId).eq('user_id', user.id).then()
       delete next[productId]
       return next
     })
-  }, [])
+  }, [user])
 
-  // ─── Título dinâmico ───
+  async function handleLogout() {
+    await supabase.auth.signOut()
+  }
+
+  // ─── Render ───
+  if (authLoading) {
+    return <div className="auth-loading">⚡ Carregando...</div>
+  }
+
+  if (!user) {
+    return <Auth />
+  }
+
   const titles = { home: 'Meu Setup', loja: 'Loja' }
 
   return (
     <div className="app">
-      <Header title={titles[page] || 'Setup IA'} />
+      <Header title={titles[page] || 'Setup IA'} user={user} onLogout={handleLogout} />
 
       {page === 'home' && (
         <Home

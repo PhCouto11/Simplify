@@ -289,6 +289,114 @@ body {
 .product-fav.is-fav { border: 1px solid var(--cyan); background: var(--cyan-dim); color: var(--cyan); }
 
 
+/* ============ HEADER MENU ============ */
+.header-avatar { cursor: pointer; border: none; }
+.header-menu {
+  position: absolute; top: 46px; right: 0; z-index: 100;
+  background: var(--surface-2); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 10px; min-width: 180px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+}
+.header-menu-email {
+  font-size: 11px; color: var(--text-muted); padding: 4px 8px 10px;
+  border-bottom: 1px solid var(--border); margin-bottom: 6px;
+  word-break: break-all;
+}
+.header-menu-logout {
+  width: 100%; padding: 8px; text-align: left;
+  background: var(--red-dim); border: 1px solid transparent;
+  border-radius: 8px; color: var(--red);
+  font-family: var(--font); font-size: 13px; font-weight: 500;
+  cursor: pointer; transition: border-color 0.2s;
+}
+.header-menu-logout:hover { border-color: var(--red); }
+
+
+/* ============ AUTH ============ */
+.auth-loading {
+  height: 100vh; display: flex; align-items: center; justify-content: center;
+  background: var(--bg); color: var(--text-muted); font-size: 14px;
+}
+.auth-screen {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  background: var(--bg); padding: 24px;
+}
+.auth-card {
+  width: 100%; max-width: 360px;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 36px 28px;
+}
+.auth-logo { font-size: 36px; text-align: center; margin-bottom: 12px; }
+.auth-title {
+  font-size: 22px; font-weight: 700; text-align: center;
+  margin-bottom: 6px; letter-spacing: -0.5px;
+}
+.auth-subtitle {
+  font-size: 13px; color: var(--text-2); text-align: center;
+  margin-bottom: 24px; line-height: 1.5;
+}
+.auth-input {
+  width: 100%; padding: 11px 14px;
+  background: var(--surface-2); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); color: var(--text);
+  font-family: var(--font); font-size: 14px;
+  outline: none; transition: border-color 0.2s;
+  margin-bottom: 10px; display: block;
+}
+.auth-input:focus { border-color: var(--cyan); }
+.auth-input::placeholder { color: var(--text-muted); }
+.auth-otp {
+  text-align: center; font-family: var(--mono);
+  font-size: 24px; letter-spacing: 8px;
+}
+.auth-btn-primary {
+  width: 100%; padding: 13px; margin-top: 4px;
+  background: linear-gradient(135deg, var(--cyan), var(--purple));
+  border: none; border-radius: var(--radius-sm);
+  color: #fff; font-family: var(--font); font-size: 14px; font-weight: 600;
+  cursor: pointer; transition: opacity 0.2s;
+}
+.auth-btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+.auth-btn-primary:hover:not(:disabled) { opacity: 0.9; }
+.auth-divider {
+  display: flex; align-items: center; gap: 12px;
+  margin: 20px 0; color: var(--text-muted); font-size: 12px;
+}
+.auth-divider::before, .auth-divider::after {
+  content: ''; flex: 1; height: 1px; background: var(--border);
+}
+.auth-social { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 20px; }
+.auth-btn-social {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 10px 14px; background: var(--surface-2);
+  border: 1px solid var(--border); border-radius: var(--radius-sm);
+  color: var(--text-2); font-family: var(--font); font-size: 13px; font-weight: 500;
+  cursor: pointer; transition: all 0.2s;
+}
+.auth-btn-social:hover:not(:disabled) { border-color: var(--border-hover); color: var(--text); }
+.auth-btn-phone { grid-column: 1 / -1; }
+.auth-error {
+  font-size: 12px; color: var(--red); margin-bottom: 8px;
+  padding: 8px 12px; background: var(--red-dim); border-radius: 8px;
+}
+.auth-success {
+  font-size: 12px; color: var(--green); margin-bottom: 8px;
+  padding: 8px 12px; background: var(--green-dim); border-radius: 8px;
+}
+.auth-toggle { text-align: center; font-size: 13px; color: var(--text-2); }
+.auth-toggle button {
+  background: none; border: none; color: var(--cyan);
+  font-family: var(--font); font-size: 13px; font-weight: 500;
+  cursor: pointer; margin-left: 5px;
+}
+.auth-back {
+  background: none; border: none; color: var(--text-2);
+  font-family: var(--font); font-size: 13px; cursor: pointer;
+  padding: 0; margin-bottom: 20px; display: block; transition: color 0.2s;
+}
+.auth-back:hover { color: var(--text); }
+
+
 /* ============ BOTTOM NAV ============ */
 .bottom-nav {
   position: absolute; bottom: 0; left: 0; right: 0;
