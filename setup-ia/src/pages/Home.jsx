@@ -30,22 +30,6 @@ export default function Home({ wishlist, toggleOwned, removeFromWishlist, toggle
     <div className="page active">
       <ScoreCard wishlist={wishlist} />
 
-      {/* Smart Setup Score */}
-      {total > 0 && (
-        <div className="smart-score-bar">
-          <div className="smart-score-left">
-            <div className="smart-score-label">Setup completo</div>
-            <div className="smart-score-val">{smartScore}%</div>
-          </div>
-          <div className="smart-score-track">
-            <div className="smart-score-fill" style={{ width: `${smartScore}%` }} />
-          </div>
-          <div className="smart-score-chip">
-            {smartScore < 40 ? '🌱 Iniciando' : smartScore < 70 ? '⚡ Crescendo' : smartScore < 90 ? '🔥 Quase lá' : '🏆 Completo'}
-          </div>
-        </div>
-      )}
-
       {/* Tabs */}
       <div className="home-tabs">
         {[
