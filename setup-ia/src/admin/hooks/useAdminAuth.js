@@ -9,7 +9,9 @@ export function useAdminAuth() {
 
     async function check() {
       try {
+        console.log('[admin] checking session...')
         const { data: { session } } = await supabase.auth.getSession()
+        console.log('[admin] session:', session?.user?.email ?? 'null')
         if (!session?.user) {
           if (mounted) setState({ loading: false, user: null, isAdmin: false })
           return
