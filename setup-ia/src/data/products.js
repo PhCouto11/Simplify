@@ -1,5 +1,5 @@
 // ============================================
-// CATÁLOGO DE PRODUTOS - SETUP IA
+// CATÁLOGO DE PRODUTOS - SIMPLIFY
 // Última atualização: 2025 — preços em BRL
 // ============================================
 

@@ -108,7 +108,7 @@ export default function Auth() {
     <div className="auth-screen">
       <div className="auth-card">
         <div className="auth-logo">⚡</div>
-        <h1 className="auth-title">Setup IA</h1>
+        <h1 className="auth-title">Simplify</h1>
         <p className="auth-subtitle">
           {mode === 'login' ? 'Entre na sua conta' : 'Crie sua conta gratuitamente'}
         </p>

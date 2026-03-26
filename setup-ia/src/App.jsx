@@ -137,7 +137,7 @@ export default function App() {
 
   return (
     <div className="app">
-      <Header title={titles[page] || 'Setup IA'} user={user} onLogout={handleLogout} />
+      <Header title={titles[page] || 'Simplify'} user={user} onLogout={handleLogout} />
 
       {page === 'home' && (
         <Home

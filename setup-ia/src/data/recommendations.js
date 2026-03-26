@@ -1,5 +1,5 @@
 // ============================================
-// SMART RECOMMENDATION ENGINE - SETUP IA
+// SMART RECOMMENDATION ENGINE - SIMPLIFY
 // ============================================
 
 // Category complement map: if user has X, they need Y
