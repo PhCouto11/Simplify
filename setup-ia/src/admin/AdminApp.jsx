@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { SpeedInsights } from '@vercel/speed-insights/react'
 import { useAdminAuth } from './hooks/useAdminAuth'
 import AdminSidebar from './components/AdminSidebar'
 import AdminTopBar from './components/AdminTopBar'
@@ -70,6 +71,7 @@ export default function AdminApp() {
       <main className="admin-main">
         <PageComponent />
       </main>
+      <SpeedInsights />
     </div>
   )
 }
