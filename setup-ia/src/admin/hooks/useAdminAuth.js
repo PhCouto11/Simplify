@@ -8,18 +8,24 @@ export function useAdminAuth() {
     let mounted = true
 
     async function check() {
-      const { data: { session } } = await supabase.auth.getSession()
-      if (!session?.user) {
+      try {
+        const { data: { session } } = await supabase.auth.getSession()
+        if (!session?.user) {
+          if (mounted) setState({ loading: false, user: null, isAdmin: false })
+          return
+        }
+        const { data, error } = await supabase
+          .from('user_roles')
+          .select('role')
+          .eq('user_id', session.user.id)
+          .eq('role', 'admin')
+          .maybeSingle()
+        if (error) console.error('useAdminAuth error:', error)
+        if (mounted) setState({ loading: false, user: session.user, isAdmin: !!data })
+      } catch (err) {
+        console.error('useAdminAuth catch:', err)
         if (mounted) setState({ loading: false, user: null, isAdmin: false })
-        return
       }
-      const { data } = await supabase
-        .from('user_roles')
-        .select('role')
-        .eq('user_id', session.user.id)
-        .eq('role', 'admin')
-        .maybeSingle()
-      if (mounted) setState({ loading: false, user: session.user, isAdmin: !!data })
     }
 
     check()
