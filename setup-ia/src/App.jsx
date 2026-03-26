@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect } from 'react'
+import { SpeedInsights } from '@vercel/speed-insights/react'
 import { supabase } from './lib/supabase'
 import Header from './components/Header'
 import BottomNav from './components/BottomNav'
@@ -170,6 +171,7 @@ export default function App() {
         onChange={setPage}
         wishlistCount={Object.keys(wishlist).length}
       />
+      <SpeedInsights />
     </div>
   )
 }
