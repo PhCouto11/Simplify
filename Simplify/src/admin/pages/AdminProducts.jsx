@@ -12,6 +12,7 @@ const EMPTY_FORM = { emoji: '', brand: '', name: '', cat: '', price: '', desc: '
 export default function AdminProducts() {
   const [flags, setFlags] = useState({})
   const [affiliates, setAffiliates] = useState({}) // { product_id: url }
+  const [clicks, setClicks] = useState({})          // { product_id: count }
   const [dbProducts, setDbProducts] = useState([])
   const [modal, setModal] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -23,17 +24,21 @@ export default function AdminProducts() {
 
   useEffect(() => {
     async function loadData() {
-      const [{ data: flagsData }, { data: productsData }, { data: affiliatesData }] = await Promise.all([
+      const [{ data: flagsData }, { data: productsData }, { data: affiliatesData }, { data: clicksData }] = await Promise.all([
         supabase.from('product_flags').select('*'),
         supabase.from('products').select('*').order('created_at', { ascending: false }),
         supabase.from('product_affiliates').select('*'),
+        supabase.from('click_events').select('product_id'),
       ])
       const flagMap = {}
       ;(flagsData || []).forEach(f => { flagMap[f.product_id] = f })
       const affiliateMap = {}
       ;(affiliatesData || []).forEach(a => { affiliateMap[a.product_id] = a.url })
+      const clickMap = {}
+      ;(clicksData || []).forEach(c => { clickMap[c.product_id] = (clickMap[c.product_id] || 0) + 1 })
       setFlags(flagMap)
       setAffiliates(affiliateMap)
+      setClicks(clickMap)
       setDbProducts(productsData || [])
       setLoading(false)
     }
@@ -160,18 +165,25 @@ export default function AdminProducts() {
       key: 'affiliate', label: 'Afiliado', sortable: false,
       render: r => (
         <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-          {affiliates[r.id] ? (
-            <span style={{
-              fontSize: 11, fontWeight: 600,
-              color: 'var(--green)', background: 'var(--green-dim)',
-              border: '1px solid rgba(16,185,129,0.2)',
-              borderRadius: 5, padding: '2px 7px',
-            }}>
-              🔗 Link ativo
-            </span>
-          ) : (
-            <span style={{ fontSize: 12, color: 'var(--text-muted)' }}>—</span>
-          )}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+            {affiliates[r.id] ? (
+              <span style={{
+                fontSize: 11, fontWeight: 600,
+                color: 'var(--green)', background: 'var(--green-dim)',
+                border: '1px solid rgba(16,185,129,0.2)',
+                borderRadius: 5, padding: '2px 7px', whiteSpace: 'nowrap',
+              }}>
+                🔗 Link ativo
+              </span>
+            ) : (
+              <span style={{ fontSize: 12, color: 'var(--text-muted)' }}>—</span>
+            )}
+            {clicks[r.id] > 0 && (
+              <span style={{ fontSize: 10, color: 'var(--text-muted)', paddingLeft: 2 }}>
+                {clicks[r.id]} clique{clicks[r.id] !== 1 ? 's' : ''}
+              </span>
+            )}
+          </div>
           <button
             className="admin-btn admin-btn-ghost"
             style={{ padding: '3px 8px', fontSize: 11 }}

@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { PRODUCTS, CATEGORIES } from '../data/products'
 import { getMinPrice } from '../data/storePrices'
+import { supabase } from '../lib/supabase'
 import ProductCard from '../components/ProductCard'
 
 const SORT_OPTIONS = [
@@ -14,9 +15,17 @@ export default function Loja({ wishlist, toggleWishlist }) {
   const [search, setSearch] = useState('')
   const [sort, setSort] = useState('rel')
   const [sortOpen, setSortOpen] = useState(false)
+  const [affiliates, setAffiliates] = useState({}) // { product_id: url }
   const sortRef = useRef(null)
 
-  // Close dropdown when clicking outside
+  useEffect(() => {
+    supabase.from('product_affiliates').select('product_id, url').then(({ data }) => {
+      const map = {}
+      ;(data || []).forEach(a => { map[a.product_id] = a.url })
+      setAffiliates(map)
+    })
+  }, [])
+
   useEffect(() => {
     function onOutside(e) {
       if (sortRef.current && !sortRef.current.contains(e.target)) setSortOpen(false)
@@ -42,7 +51,6 @@ export default function Loja({ wishlist, toggleWishlist }) {
 
   return (
     <div className="page active">
-      {/* Store Header */}
       <div className="store-header">
         <div className="store-header-text">
           <h2 className="store-title">Loja</h2>
@@ -111,14 +119,12 @@ export default function Loja({ wishlist, toggleWishlist }) {
         ))}
       </div>
 
-      {/* Results count */}
       {(search || cat !== 'all') && filtered.length > 0 && (
         <div className="results-count">
           {filtered.length} produto{filtered.length !== 1 ? 's' : ''} encontrado{filtered.length !== 1 ? 's' : ''}
         </div>
       )}
 
-      {/* Product Grid */}
       <div className="product-grid">
         {filtered.map(p => (
           <ProductCard
@@ -126,6 +132,7 @@ export default function Loja({ wishlist, toggleWishlist }) {
             product={p}
             inWishlist={!!wishlist[p.id]}
             onToggle={toggleWishlist}
+            affiliateUrl={affiliates[p.id]}
           />
         ))}
       </div>

@@ -346,6 +346,18 @@ body {
 .product-fav.not-fav:hover { border-color: var(--cyan); color: var(--cyan); background: var(--cyan-dim); }
 .product-fav.is-fav { border: 1px solid var(--cyan); background: var(--cyan-dim); color: var(--cyan); }
 
+/* Buy / affiliate button */
+.product-buy {
+  width: 100%; padding: 10px; border-radius: 9px; font-size: 12px;
+  font-weight: 700; font-family: var(--font); cursor: pointer;
+  margin-bottom: 6px; border: none;
+  background: var(--green); color: #fff;
+  transition: opacity 0.2s, transform 0.15s;
+  letter-spacing: 0.02em;
+}
+.product-buy:hover { opacity: 0.88; transform: translateY(-1px); }
+.product-buy:active { transform: translateY(0); }
+
 
 /* ============ HEADER MENU ============ */
 .header-avatar { cursor: pointer; border: none; }

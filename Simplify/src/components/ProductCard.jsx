@@ -1,19 +1,21 @@
 import { useState } from 'react'
 import { CAT_COLORS } from '../data/products'
 import { STORES, getStorePrices, getMinPrice } from '../data/storePrices'
+import { trackClick } from '../lib/trackClick'
 
-export default function ProductCard({ product, inWishlist, onToggle }) {
+export default function ProductCard({ product, inWishlist, onToggle, affiliateUrl }) {
   const [imgError, setImgError] = useState(false)
   const [activeStore, setActiveStore] = useState(null)
 
   const storePrices = getStorePrices(product)
   const minPrice = getMinPrice(product)
-
-  function handleStoreBadge(key) {
-    setActiveStore(prev => prev === key ? null : key)
-  }
-
   const activeStoreData = STORES.find(s => s.key === activeStore)
+
+  function handleBuy(e) {
+    e.preventDefault()
+    trackClick(product.id, affiliateUrl)
+    window.open(affiliateUrl, '_blank', 'noopener,noreferrer')
+  }
 
   return (
     <div className={`product-card ${inWishlist ? 'in-wishlist' : ''}`}>
@@ -58,7 +60,7 @@ export default function ProductCard({ product, inWishlist, onToggle }) {
               key={s.key}
               className={`store-badge ${activeStore === s.key ? 'store-badge-active' : ''}`}
               style={{ background: s.color, color: s.textColor }}
-              onClick={() => handleStoreBadge(s.key)}
+              onClick={() => setActiveStore(prev => prev === s.key ? null : s.key)}
               title={`${s.label}: R$ ${storePrices[s.key].toLocaleString('pt-BR')}`}
             >
               {s.abbr}
@@ -76,6 +78,13 @@ export default function ProductCard({ product, inWishlist, onToggle }) {
             R$ {storePrices[activeStore].toLocaleString('pt-BR')}
           </span>
         </div>
+      )}
+
+      {/* Buy button — only when affiliate URL is set */}
+      {affiliateUrl && (
+        <button className="product-buy" onClick={handleBuy}>
+          Comprar →
+        </button>
       )}
 
       <button
