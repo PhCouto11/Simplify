@@ -11,23 +11,29 @@ const EMPTY_FORM = { emoji: '', brand: '', name: '', cat: '', price: '', desc: '
 
 export default function AdminProducts() {
   const [flags, setFlags] = useState({})
+  const [affiliates, setAffiliates] = useState({}) // { product_id: url }
   const [dbProducts, setDbProducts] = useState([])
   const [modal, setModal] = useState(null)
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
   const [form, setForm] = useState(EMPTY_FORM)
+  const [affiliateUrl, setAffiliateUrl] = useState('')
 
   const { page, setPage, pageSize, sortCol, sortDir, handleSort, search, handleSearch, filters, handleFilter } = useAdminData(25)
 
   useEffect(() => {
     async function loadData() {
-      const [{ data: flagsData }, { data: productsData }] = await Promise.all([
+      const [{ data: flagsData }, { data: productsData }, { data: affiliatesData }] = await Promise.all([
         supabase.from('product_flags').select('*'),
-        supabase.from('products').select('*').order('created_at', { ascending: false })
+        supabase.from('products').select('*').order('created_at', { ascending: false }),
+        supabase.from('product_affiliates').select('*'),
       ])
-      const map = {}
-      ;(flagsData || []).forEach(f => { map[f.product_id] = f })
-      setFlags(map)
+      const flagMap = {}
+      ;(flagsData || []).forEach(f => { flagMap[f.product_id] = f })
+      const affiliateMap = {}
+      ;(affiliatesData || []).forEach(a => { affiliateMap[a.product_id] = a.url })
+      setFlags(flagMap)
+      setAffiliates(affiliateMap)
       setDbProducts(productsData || [])
       setLoading(false)
     }
@@ -52,7 +58,6 @@ export default function AdminProducts() {
 
   const total = filtered.length
   const rows = filtered.slice((page - 1) * pageSize, page * pageSize)
-
   const dbIds = new Set(dbProducts.map(p => p.id))
 
   async function toggleFlag(product) {
@@ -93,6 +98,41 @@ export default function AdminProducts() {
     setModal(null)
   }
 
+  function openAffiliateModal(product) {
+    setAffiliateUrl(affiliates[product.id] || '')
+    setModal({ type: 'affiliate', product })
+  }
+
+  async function saveAffiliate() {
+    const productId = modal.product.id
+    const url = affiliateUrl.trim()
+    setSaving(true)
+    if (url) {
+      await supabase.from('product_affiliates').upsert({
+        product_id: productId,
+        url,
+        updated_at: new Date().toISOString(),
+      })
+      setAffiliates(prev => ({ ...prev, [productId]: url }))
+    } else {
+      await supabase.from('product_affiliates').delete().eq('product_id', productId)
+      setAffiliates(prev => { const next = { ...prev }; delete next[productId]; return next })
+    }
+    setSaving(false)
+    setModal(null)
+    setAffiliateUrl('')
+  }
+
+  async function removeAffiliate() {
+    const productId = modal.product.id
+    setSaving(true)
+    await supabase.from('product_affiliates').delete().eq('product_id', productId)
+    setAffiliates(prev => { const next = { ...prev }; delete next[productId]; return next })
+    setSaving(false)
+    setModal(null)
+    setAffiliateUrl('')
+  }
+
   const staticCats = [...new Set(PRODUCTS.map(p => p.cat))]
   const categories = ['all', ...new Set(allProducts.map(p => p.cat))]
 
@@ -115,6 +155,33 @@ export default function AdminProducts() {
     {
       key: 'price', label: 'Preço', sortable: true, mono: true,
       render: r => `R$ ${Number(r.price).toLocaleString('pt-BR')}`
+    },
+    {
+      key: 'affiliate', label: 'Afiliado', sortable: false,
+      render: r => (
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+          {affiliates[r.id] ? (
+            <span style={{
+              fontSize: 11, fontWeight: 600,
+              color: 'var(--green)', background: 'var(--green-dim)',
+              border: '1px solid rgba(16,185,129,0.2)',
+              borderRadius: 5, padding: '2px 7px',
+            }}>
+              🔗 Link ativo
+            </span>
+          ) : (
+            <span style={{ fontSize: 12, color: 'var(--text-muted)' }}>—</span>
+          )}
+          <button
+            className="admin-btn admin-btn-ghost"
+            style={{ padding: '3px 8px', fontSize: 11 }}
+            onClick={() => openAffiliateModal(r)}
+            title={affiliates[r.id] ? 'Editar link afiliado' : 'Adicionar link afiliado'}
+          >
+            ✎
+          </button>
+        </div>
+      )
     },
     {
       key: 'flagged', label: 'Status', sortable: false,
@@ -191,6 +258,58 @@ export default function AdminProducts() {
         emptyText="Nenhum produto encontrado."
       />
 
+      {/* ── Affiliate link modal ── */}
+      {modal?.type === 'affiliate' && (
+        <div className="admin-modal-overlay" onClick={() => setModal(null)}>
+          <div className="admin-modal" onClick={e => e.stopPropagation()} style={{ maxWidth: 500 }}>
+            <div className="admin-modal-title">Link de Afiliado</div>
+            <div style={{ fontSize: 13, color: 'var(--text-2)', marginBottom: 14 }}>
+              <strong>{modal.product.brand}</strong> {modal.product.name}
+            </div>
+            <div style={{ marginBottom: 6, fontSize: 12, color: 'var(--text-muted)' }}>
+              Cole aqui o link da API ou URL de afiliado
+            </div>
+            <input
+              className="admin-search-input"
+              style={{ width: '100%', marginBottom: 6, fontFamily: 'var(--mono)', fontSize: 12 }}
+              placeholder="https://www.amazon.com.br/dp/... ou link de afiliado"
+              value={affiliateUrl}
+              onChange={e => setAffiliateUrl(e.target.value)}
+              autoFocus
+            />
+            {affiliateUrl && (
+              <div style={{
+                fontSize: 11, color: 'var(--text-muted)', marginBottom: 16,
+                wordBreak: 'break-all', fontFamily: 'var(--mono)',
+                background: 'var(--surface-2)', border: '1px solid var(--border)',
+                borderRadius: 6, padding: '6px 10px',
+              }}>
+                {affiliateUrl}
+              </div>
+            )}
+            {!affiliateUrl && <div style={{ marginBottom: 16 }} />}
+            <div className="admin-modal-actions">
+              <button className="admin-btn admin-btn-ghost" onClick={() => { setModal(null); setAffiliateUrl('') }}>
+                Cancelar
+              </button>
+              {affiliates[modal.product.id] && (
+                <button className="admin-btn admin-btn-danger" onClick={removeAffiliate} disabled={saving}>
+                  Remover link
+                </button>
+              )}
+              <button
+                className="admin-btn admin-btn-primary"
+                onClick={saveAffiliate}
+                disabled={saving || affiliateUrl.trim() === (affiliates[modal.product.id] || '')}
+              >
+                {saving ? 'Salvando...' : 'Salvar'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── Flag modals ── */}
       {modal?.type === 'flag' && (
         <AdminConfirmModal
           title="Sinalizar produto"
@@ -222,6 +341,7 @@ export default function AdminProducts() {
         />
       )}
 
+      {/* ── Add product modal ── */}
       {modal?.type === 'add' && (
         <div className="admin-modal-overlay" onClick={() => setModal(null)}>
           <div className="admin-modal" onClick={e => e.stopPropagation()} style={{ maxWidth: 520 }}>
