@@ -7,12 +7,14 @@ import AdminUsers from './pages/AdminUsers'
 import AdminProducts from './pages/AdminProducts'
 import AdminAlerts from './pages/AdminAlerts'
 import AdminLogs from './pages/AdminLogs'
+import AdminCategories from './pages/AdminCategories'
 
 const PAGE_MAP = {
   '/admin': 'dashboard',
   '/admin/': 'dashboard',
   '/admin/users': 'users',
   '/admin/products': 'products',
+  '/admin/categories': 'categories',
   '/admin/alerts': 'alerts',
   '/admin/logs': 'logs',
 }
@@ -21,6 +23,7 @@ const PAGE_TITLES = {
   dashboard: 'Dashboard',
   users: 'Usuários',
   products: 'Produtos',
+  categories: 'Categorias',
   alerts: 'Alertas',
   logs: 'Logs',
 }
@@ -29,6 +32,7 @@ const PAGES = {
   dashboard: AdminDashboard,
   users: AdminUsers,
   products: AdminProducts,
+  categories: AdminCategories,
   alerts: AdminAlerts,
   logs: AdminLogs,
 }

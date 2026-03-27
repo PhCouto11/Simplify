@@ -1,10 +1,29 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { PRODUCTS, CATEGORIES } from '../data/products'
+import { getMinPrice } from '../data/storePrices'
 import ProductCard from '../components/ProductCard'
+
+const SORT_OPTIONS = [
+  { key: 'rel',  label: 'Relevância' },
+  { key: 'asc',  label: 'Menor preço' },
+  { key: 'desc', label: 'Maior preço' },
+]
 
 export default function Loja({ wishlist, toggleWishlist }) {
   const [cat, setCat] = useState('all')
   const [search, setSearch] = useState('')
+  const [sort, setSort] = useState('rel')
+  const [sortOpen, setSortOpen] = useState(false)
+  const sortRef = useRef(null)
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function onOutside(e) {
+      if (sortRef.current && !sortRef.current.contains(e.target)) setSortOpen(false)
+    }
+    document.addEventListener('mousedown', onOutside)
+    return () => document.removeEventListener('mousedown', onOutside)
+  }, [])
 
   let filtered = PRODUCTS
   if (cat !== 'all') filtered = filtered.filter(p => p.cat === cat)
@@ -15,7 +34,11 @@ export default function Loja({ wishlist, toggleWishlist }) {
     )
   }
 
+  if (sort === 'asc')  filtered = [...filtered].sort((a, b) => getMinPrice(a) - getMinPrice(b))
+  if (sort === 'desc') filtered = [...filtered].sort((a, b) => getMinPrice(b) - getMinPrice(a))
+
   const inWishlistCount = Object.keys(wishlist).length
+  const activeSort = SORT_OPTIONS.find(o => o.key === sort)
 
   return (
     <div className="page active">
@@ -34,19 +57,45 @@ export default function Loja({ wishlist, toggleWishlist }) {
         )}
       </div>
 
-      {/* Search */}
-      <div className="search-wrap">
-        <span className="search-icon">🔍</span>
-        <input
-          className="search-input"
-          placeholder="Buscar produto, marca..."
-          value={search}
-          onChange={e => setSearch(e.target.value)}
-          autoComplete="off"
-        />
-        {search && (
-          <button className="search-clear" onClick={() => setSearch('')}>×</button>
-        )}
+      {/* Search + Sort */}
+      <div className="search-sort-row">
+        <div className="search-wrap">
+          <span className="search-icon">🔍</span>
+          <input
+            className="search-input"
+            placeholder="Buscar produto, marca..."
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+            autoComplete="off"
+          />
+          {search && (
+            <button className="search-clear" onClick={() => setSearch('')}>×</button>
+          )}
+        </div>
+
+        <div className="sort-wrap" ref={sortRef}>
+          <button
+            className={`sort-btn ${sort !== 'rel' ? 'sort-btn-active' : ''}`}
+            onClick={() => setSortOpen(o => !o)}
+          >
+            <span className="sort-btn-icon">↕</span>
+            <span className="sort-btn-label">{activeSort?.label}</span>
+          </button>
+          {sortOpen && (
+            <div className="sort-dropdown">
+              {SORT_OPTIONS.map(o => (
+                <button
+                  key={o.key}
+                  className={`sort-option ${sort === o.key ? 'sort-option-active' : ''}`}
+                  onClick={() => { setSort(o.key); setSortOpen(false) }}
+                >
+                  {sort === o.key && <span style={{ color: 'var(--cyan)', marginRight: 6 }}>✓</span>}
+                  {o.label}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
 
       {/* Category Tabs */}

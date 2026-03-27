@@ -216,7 +216,12 @@ body {
 
 
 /* ============ LOJA ============ */
-.search-wrap { position: relative; margin-bottom: 14px; }
+
+/* Search + Sort row */
+.search-sort-row { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; }
+.search-sort-row .search-wrap { flex: 1; margin-bottom: 0; }
+
+.search-wrap { position: relative; }
 .search-input {
   width: 100%; padding: 11px 14px 11px 38px;
   background: var(--surface); border: 1px solid var(--border);
@@ -226,6 +231,37 @@ body {
 .search-input:focus { border-color: var(--cyan); }
 .search-input::placeholder { color: var(--text-muted); }
 .search-icon { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 14px; }
+
+/* Sort dropdown */
+.sort-wrap { position: relative; flex-shrink: 0; }
+.sort-btn {
+  display: flex; align-items: center; gap: 5px;
+  padding: 9px 11px; border: 1px solid var(--border);
+  border-radius: 12px; background: var(--surface);
+  color: var(--text-2); font-family: var(--font);
+  font-size: 12px; font-weight: 500; cursor: pointer;
+  white-space: nowrap; transition: all 0.2s;
+}
+.sort-btn:hover { border-color: var(--border-hover); color: var(--text); }
+.sort-btn-active { border-color: var(--cyan) !important; color: var(--cyan) !important; background: var(--cyan-dim) !important; }
+.sort-btn-icon { font-size: 13px; }
+.sort-btn-label { display: none; }
+@media (min-width: 380px) { .sort-btn-label { display: inline; } }
+.sort-dropdown {
+  position: absolute; top: calc(100% + 6px); right: 0; z-index: 50;
+  background: var(--surface-2); border: 1px solid var(--border);
+  border-radius: 10px; padding: 6px; min-width: 150px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+}
+.sort-option {
+  display: flex; align-items: center; width: 100%;
+  padding: 9px 12px; border: none; background: transparent;
+  color: var(--text-2); font-family: var(--font);
+  font-size: 13px; text-align: left; cursor: pointer;
+  border-radius: 7px; transition: all 0.15s;
+}
+.sort-option:hover { background: var(--surface-3); color: var(--text); }
+.sort-option-active { color: var(--cyan) !important; }
 
 .cat-tabs {
   display: flex; gap: 8px; overflow-x: auto; padding-bottom: 14px;
@@ -268,7 +304,38 @@ body {
   font-size: 13px; font-weight: 500; margin-bottom: 6px; line-height: 1.35;
   display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
 }
-.product-price { font-family: var(--mono); font-size: 14px; font-weight: 600; color: var(--cyan); margin-bottom: 10px; }
+/* Price block */
+.product-price-block {
+  display: flex; align-items: flex-end;
+  justify-content: space-between; gap: 6px; margin-bottom: 6px;
+}
+.product-from { font-size: 9px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1px; }
+.product-price { font-family: var(--mono); font-size: 14px; font-weight: 600; color: var(--cyan); }
+
+/* Store badges */
+.store-badges { display: flex; gap: 4px; align-items: center; flex-shrink: 0; }
+.store-badge {
+  width: 22px; height: 22px; border-radius: 50%;
+  font-size: 8px; font-weight: 700; letter-spacing: -0.3px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; border: 1.5px solid transparent;
+  transition: transform 0.15s, box-shadow 0.15s;
+  font-family: var(--font); line-height: 1;
+  padding: 0;
+}
+.store-badge:hover { transform: scale(1.15); }
+.store-badge-active { box-shadow: 0 0 0 2px rgba(255,255,255,0.25); transform: scale(1.1); }
+
+/* Active store price tooltip */
+.store-price-tip {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 5px 8px; border-radius: 7px;
+  background: var(--surface-2); border: 1px solid;
+  font-size: 11px; margin-bottom: 8px;
+  animation: tip-in 0.12s ease;
+}
+.store-price-value { font-family: var(--mono); font-size: 11px; font-weight: 600; color: var(--text); }
+@keyframes tip-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
 
 .product-fav {
   width: 100%; padding: 10px; border-radius: 9px; font-size: 12px;

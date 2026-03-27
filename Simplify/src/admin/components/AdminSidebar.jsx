@@ -10,8 +10,9 @@ export default function AdminSidebar({ active, onNavigate }) {
       label: 'Gestão',
       items: [
         { id: 'users',    icon: '◉', label: 'Usuários' },
-        { id: 'products', icon: '◈', label: 'Produtos' },
-        { id: 'alerts',   icon: '◎', label: 'Alertas' },
+        { id: 'products',   icon: '◈', label: 'Produtos' },
+        { id: 'categories', icon: '◫', label: 'Categorias' },
+        { id: 'alerts',     icon: '◎', label: 'Alertas' },
       ]
     },
     {
