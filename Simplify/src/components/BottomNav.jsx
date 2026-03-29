@@ -28,6 +28,18 @@ export default function BottomNav({ active, onChange, wishlistCount }) {
         <span className="nav-label">Loja</span>
       </button>
 
+      {/* Comparador */}
+      <button
+        className={`nav-item ${active === 'comparador' ? 'active' : ''}`}
+        onClick={() => onChange('comparador')}
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h4" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19 3h-4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Z" />
+        </svg>
+        <span className="nav-label">Comparar</span>
+      </button>
+
       {/* Setups */}
       <button
         className={`nav-item ${active === 'setups' ? 'active' : ''}`}

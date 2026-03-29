@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Loja from './pages/Loja'
 import Setups from './pages/Setups'
 import Auth from './pages/Auth'
+import ComparatorHome from './components/Comparator/ComparatorHome'
 
 // ─── Default setups structure ───
 const DEFAULT_SETUPS = { work: [], gaming: [], travel: [], studio: [] }
@@ -133,7 +134,7 @@ export default function App() {
     return <Auth />
   }
 
-  const titles = { home: 'Meu Setup', loja: 'Loja', setups: 'Setups' }
+  const titles = { home: 'Meu Setup', loja: 'Loja', setups: 'Setups', comparador: 'Comparador' }
 
   return (
     <div className="app">
@@ -164,6 +165,8 @@ export default function App() {
           onRemoveProduct={removeProductFromSetup}
         />
       )}
+
+      {page === 'comparador' && <ComparatorHome />}
 
       <BottomNav
         active={page}

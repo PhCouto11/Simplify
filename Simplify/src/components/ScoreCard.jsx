@@ -44,7 +44,7 @@ export default function ScoreCard({ wishlist }) {
     badgeStyle = { background: 'var(--purple-dim)', color: 'var(--purple)' }
   } else {
     badgeText = '🎯 Começando'
-    badgeStyle = { background: 'var(--cyan-dim)', color: 'var(--cyan)' }
+    badgeStyle = { background: 'var(--cyan-dim)', color: 'var(--accent-text)' }
   }
 
   // Explanation text
