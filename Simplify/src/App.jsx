@@ -166,7 +166,11 @@ export default function App() {
         />
       )}
 
-      {page === 'comparador' && <SmartCompare />}
+      {page === 'comparador' && (
+        <div className="page" style={{ padding: 0, background: '#f8f8f6' }}>
+          <SmartCompare />
+        </div>
+      )}
 
 <BottomNav
         active={page}

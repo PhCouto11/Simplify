@@ -55,16 +55,30 @@
   --shadow-dropdown: 0 8px 24px rgba(0,0,0,0.1);
 }
 
-html, body { height: 100%; overflow: hidden; }
+html {
+  height: 100%;
+  /* iOS Safari: evita o salto quando a barra de endereço aparece/some */
+  height: -webkit-fill-available;
+  overflow: hidden;
+}
 body {
+  height: 100%;
+  height: -webkit-fill-available;
+  overflow: hidden;
   background: var(--bg);
   color: var(--text);
   font-family: var(--font);
   font-weight: 400;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Previne zoom no double-tap (iOS) */
+  touch-action: manipulation;
 }
-#root { height: 100%; }
+#root {
+  height: 100%;
+  height: -webkit-fill-available;
+}
 
 
 /* ============ APP SHELL ============ */
@@ -72,6 +86,8 @@ body {
   max-width: 520px;
   margin: 0 auto;
   height: 100vh;
+  height: 100dvh;           /* viewport dinâmico — exclui barra do browser */
+  height: -webkit-fill-available;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -102,11 +118,16 @@ body {
 
 /* ============ PAGES (scrollable) ============ */
 .page {
-  flex: 1; overflow-y: auto; overflow-x: hidden;
-  padding: 0 20px 110px;
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* padding-bottom acomoda a nav fixa + safe area do iPhone */
+  padding: 0 20px calc(90px + env(safe-area-inset-bottom, 0px));
   -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;    /* evita bounce passar pro body */
 }
 .page::-webkit-scrollbar { display: none; }
+.page { scrollbar-width: none; }     /* Firefox */
 
 
 /* ============ SCORE CARD ============ */
@@ -737,88 +758,127 @@ body {
 
 /* ============ BOTTOM NAV — LIQUID GLASS ============ */
 .bottom-nav {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  display: flex; justify-content: space-around; align-items: center;
-  padding: 8px 12px 20px;
-  z-index: 50;
+  /* Fixo para aparecer em TODAS as 4 abas, independente do scroll */
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 520px;        /* alinha com o .app */
 
-  /* Liquid glass layers */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* safe-area-inset-bottom: responde ao home bar do iPhone */
+  padding: 8px 12px calc(16px + env(safe-area-inset-bottom, 0px));
+  z-index: 100;
+
+  /* ── Liquid glass ── */
   background:
     linear-gradient(
       180deg,
-      rgba(255,255,255,0.72) 0%,
-      rgba(255,255,255,0.58) 100%
+      rgba(255,255,255,0.75) 0%,
+      rgba(255,255,255,0.60) 100%
     );
-  backdrop-filter: blur(28px) saturate(180%) brightness(1.06);
   -webkit-backdrop-filter: blur(28px) saturate(180%) brightness(1.06);
+          backdrop-filter: blur(28px) saturate(180%) brightness(1.06);
 
-  /* Glass edges */
-  border-top: 1px solid rgba(255,255,255,0.9);
+  border-top: 1px solid rgba(255,255,255,0.92);
   box-shadow:
     0 -1px 0 rgba(0,0,0,0.06),
     inset 0 1px 0 rgba(255,255,255,0.95),
-    0 -8px 32px rgba(0,0,0,0.06);
+    0 -8px 32px rgba(0,0,0,0.07);
+
+  /* Hardware acceleration */
+  -webkit-transform: translateX(-50%) translateZ(0);
+          transform: translateX(-50%) translateZ(0);
+  will-change: transform;
 }
 
-/* Reflexo especular no topo */
+/* Reflexo especular no topo da barra */
 .bottom-nav::before {
   content: '';
-  position: absolute; top: 0; left: 10%; right: 10%; height: 1px;
+  position: absolute;
+  top: 0; left: 8%; right: 8%;
+  height: 1px;
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(255,255,255,0.0) 10%,
-    rgba(255,255,255,1) 40%,
-    rgba(255,255,255,1) 60%,
-    rgba(255,255,255,0.0) 90%,
+    rgba(255,255,255,0) 8%,
+    rgba(255,255,255,0.9) 38%,
+    rgba(255,255,255,0.9) 62%,
+    rgba(255,255,255,0) 92%,
     transparent 100%
   );
+  pointer-events: none;
 }
 
+/* ── Nav items ── */
 .nav-item {
-  display: flex; flex-direction: column; align-items: center; gap: 3px;
-  background: none; border: none; color: var(--text-muted);
-  cursor: pointer; padding: 6px 14px; font-family: var(--font);
-  transition: color 0.25s ease; position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 6px 14px;
+  font-family: var(--font);
+  transition: color 0.2s ease;
+  position: relative;
   border-radius: 16px;
   -webkit-tap-highlight-color: transparent;
-}
-
-/* Bolha líquida no item ativo */
-.nav-item.active {
-  color: var(--text);
-}
-.nav-item.active::after {
-  content: '';
-  position: absolute; inset: 0;
-  border-radius: 16px;
-  background: linear-gradient(
-    160deg,
-    rgba(212,245,78,0.28) 0%,
-    rgba(212,245,78,0.12) 60%,
-    rgba(212,245,78,0.05) 100%
-  );
-  border: 1px solid rgba(212,245,78,0.45);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.8),
-    0 2px 12px rgba(212,245,78,0.2);
-  z-index: -1;
-  animation: liquid-pop 0.3s cubic-bezier(0.34,1.56,0.64,1);
-}
-
-@keyframes liquid-pop {
-  0%   { transform: scale(0.7); opacity: 0; }
-  60%  { transform: scale(1.05); opacity: 1; }
-  100% { transform: scale(1); opacity: 1; }
+  /* Garante que o ::after fique no lugar certo */
+  isolation: isolate;
 }
 
 .nav-item svg { width: 22px; height: 22px; stroke-width: 1.7; }
 .nav-label { font-size: 10px; font-weight: 500; letter-spacing: 0.1px; }
 
+/* ── Bolha líquida — item ativo ── */
+.nav-item.active { color: var(--text); }
+
+.nav-item.active::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  background: linear-gradient(
+    150deg,
+    rgba(212,245,78,0.30) 0%,
+    rgba(212,245,78,0.13) 55%,
+    rgba(212,245,78,0.04) 100%
+  );
+  border: 1px solid rgba(212,245,78,0.48);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.85),
+    0 2px 10px rgba(212,245,78,0.22);
+  z-index: -1;
+  -webkit-animation: liquid-pop 0.32s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+          animation: liquid-pop 0.32s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@-webkit-keyframes liquid-pop {
+  0%   { -webkit-transform: scale(0.65); transform: scale(0.65); opacity: 0; }
+  60%  { -webkit-transform: scale(1.06); transform: scale(1.06); opacity: 1; }
+  100% { -webkit-transform: scale(1);    transform: scale(1);    opacity: 1; }
+}
+@keyframes liquid-pop {
+  0%   { transform: scale(0.65); opacity: 0; }
+  60%  { transform: scale(1.06); opacity: 1; }
+  100% { transform: scale(1);    opacity: 1; }
+}
+
+/* ── Badge de contagem ── */
 .nav-badge {
-  position: absolute; top: 2px; right: 8px;
-  width: 16px; height: 16px; background: var(--text); border-radius: 50%;
-  font-size: 9px; font-weight: 700; color: var(--bg);
+  position: absolute;
+  top: 2px; right: 8px;
+  width: 16px; height: 16px;
+  background: var(--text);
+  border-radius: 50%;
+  font-size: 9px; font-weight: 700;
+  color: var(--bg);
   display: flex; align-items: center; justify-content: center;
 }
 

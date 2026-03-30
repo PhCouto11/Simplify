@@ -848,10 +848,9 @@ export default function SmartCompare() {
 
   return (
     <div style={{
-      minHeight: "calc(100vh - 120px)",
-      background: tokens.bgPage,
       fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
       paddingTop: 20,
+      paddingBottom: 24,
       opacity: fadeIn ? 1 : 0,
       transform: fadeIn ? "translateY(0)" : "translateY(6px)",
       transition: "opacity 0.15s ease, transform 0.15s ease",
