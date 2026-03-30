@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { PRODUCTS } from '../data/products'
+import WishlistItem from '../components/WishlistItem'
 
 const PRESET_SETUPS = [
   { id: 'work',    name: 'Work Setup',    icon: '💼', color: 'cyan',   desc: 'Produtividade e foco' },
@@ -15,20 +16,28 @@ const COLOR_MAP = {
   green:  { border: 'var(--green)',  bg: 'var(--green-dim)',  text: 'var(--green)' },
 }
 
-export default function Setups({ setups, onAddProduct, onRemoveProduct, wishlist }) {
-  const [selected, setSelected] = useState(null)   // setup id being viewed
+export default function Setups({ setups, onAddProduct, onRemoveProduct, wishlist, toggleOwned, removeFromWishlist, goToLoja }) {
+  const [selected, setSelected] = useState(null)
   const [showPicker, setShowPicker] = useState(false)
+  const [tab, setTab] = useState('all')
 
   const selectedSetup = PRESET_SETUPS.find(s => s.id === selected)
   const selectedProducts = selected
     ? (setups[selected] || []).map(id => PRODUCTS.find(p => p.id === id)).filter(Boolean)
     : []
 
-  // Products available to add: all wishlist items not already in this setup
   const currentSetupIds = new Set(setups[selected] || [])
   const wishlistProducts = PRODUCTS.filter(
     p => wishlist[p.id] && !currentSetupIds.has(p.id)
   )
+
+  const total = Object.keys(wishlist).length
+  const ownedCount = Object.values(wishlist).filter(v => v.owned).length
+  const wantedCount = total - ownedCount
+
+  let entries = Object.entries(wishlist)
+  if (tab === 'owned') entries = entries.filter(([, v]) => v.owned)
+  if (tab === 'wanted') entries = entries.filter(([, v]) => !v.owned)
 
   function handleBack() {
     setSelected(null)
@@ -41,7 +50,6 @@ export default function Setups({ setups, onAddProduct, onRemoveProduct, wishlist
 
     return (
       <div className="page active">
-        {/* Header */}
         <div className="setup-detail-header">
           <button className="setup-back-btn" onClick={handleBack}>←</button>
           <span className="setup-detail-icon">{selectedSetup.icon}</span>
@@ -51,7 +59,6 @@ export default function Setups({ setups, onAddProduct, onRemoveProduct, wishlist
           </div>
         </div>
 
-        {/* Products in setup */}
         {selectedProducts.length === 0 ? (
           <div className="empty" style={{ padding: '32px 16px' }}>
             <div className="empty-icon">📦</div>
@@ -79,7 +86,6 @@ export default function Setups({ setups, onAddProduct, onRemoveProduct, wishlist
           ))
         )}
 
-        {/* Add product button */}
         <button
           className="setup-add-btn"
           onClick={() => setShowPicker(true)}
@@ -88,7 +94,6 @@ export default function Setups({ setups, onAddProduct, onRemoveProduct, wishlist
           + Adicionar produto do meu setup
         </button>
 
-        {/* Product Picker Modal */}
         {showPicker && (
           <div className="modal-overlay" onClick={() => setShowPicker(false)}>
             <div className="modal-sheet" onClick={e => e.stopPropagation()}>
@@ -128,11 +133,70 @@ export default function Setups({ setups, onAddProduct, onRemoveProduct, wishlist
     )
   }
 
-  // ── Grid View (all setups) ──────────────────
+  // ── Grid View ──────────────────────────────
   return (
     <div className="page active">
+
+      {/* ── Minha Lista ── */}
       <div className="setups-page-header">
-        <h2 className="setups-title">Seus Setups</h2>
+        <h2 className="setups-title">Minha Lista</h2>
+        <p className="setups-subtitle">Produtos que tenho e que quero</p>
+      </div>
+
+      <div className="home-tabs">
+        {[
+          { key: 'all',    label: 'Todos',     count: total },
+          { key: 'owned',  label: '✅ Tenho',  count: ownedCount },
+          { key: 'wanted', label: '🎯 Quero',  count: wantedCount },
+        ].map(t => (
+          <button
+            key={t.key}
+            className={`home-tab ${tab === t.key ? 'active' : ''}`}
+            onClick={() => setTab(t.key)}
+          >
+            {t.label}
+            <span className="tab-count">{t.count}</span>
+          </button>
+        ))}
+      </div>
+
+      {entries.map(([pid, data]) => (
+        <WishlistItem
+          key={pid}
+          productId={pid}
+          owned={data.owned}
+          onToggleOwned={toggleOwned}
+          onRemove={removeFromWishlist}
+        />
+      ))}
+
+      {total > 0 && entries.length === 0 && (
+        <div className="empty" style={{ padding: 24 }}>
+          <div className="empty-icon">{tab === 'owned' ? '📦' : '✨'}</div>
+          <p className="empty-text">
+            {tab === 'owned'
+              ? 'Nenhum produto marcado como "já tenho" ainda.'
+              : 'Todos os produtos já foram conquistados!'}
+          </p>
+        </div>
+      )}
+
+      {total === 0 && (
+        <div className="empty">
+          <div className="empty-icon">🛒</div>
+          <h3 className="empty-title">Sua lista está vazia</h3>
+          <p className="empty-text">
+            Explore a Loja e adicione os produtos que quer ter no seu setup.
+          </p>
+          <button className="empty-cta" onClick={goToLoja}>
+            🏪 Explorar Loja
+          </button>
+        </div>
+      )}
+
+      {/* ── Meus Setups ── */}
+      <div className="setups-page-header" style={{ marginTop: 32 }}>
+        <h2 className="setups-title">Meus Setups</h2>
         <p className="setups-subtitle">Organize seus produtos por contexto</p>
       </div>
 
@@ -163,7 +227,6 @@ export default function Setups({ setups, onAddProduct, onRemoveProduct, wishlist
         })}
       </div>
 
-      {/* Tips */}
       <div className="setups-tip">
         <div className="setups-tip-icon">💡</div>
         <p className="setups-tip-text">
@@ -171,6 +234,8 @@ export default function Setups({ setups, onAddProduct, onRemoveProduct, wishlist
           Adicione produtos da sua wishlist em cada setup.
         </p>
       </div>
+
+      <div style={{ height: 8 }} />
     </div>
   )
 }

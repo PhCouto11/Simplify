@@ -149,9 +149,7 @@ export default function App() {
         {page === 'home' && (
           <Home
             wishlist={wishlist}
-            toggleOwned={toggleOwned}
             toggleWishlist={toggleWishlist}
-            removeFromWishlist={removeFromWishlist}
             goToLoja={() => setPage('loja')}
           />
         )}
@@ -169,6 +167,9 @@ export default function App() {
             wishlist={wishlist}
             onAddProduct={addProductToSetup}
             onRemoveProduct={removeProductFromSetup}
+            toggleOwned={toggleOwned}
+            removeFromWishlist={removeFromWishlist}
+            goToLoja={() => setPage('loja')}
           />
         )}
 
