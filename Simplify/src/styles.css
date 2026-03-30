@@ -790,6 +790,7 @@ body {
   /* safe-area-inset-bottom: responde ao home bar do iPhone */
   padding: 8px 12px calc(16px + env(safe-area-inset-bottom, 0px));
   z-index: 100;
+  opacity: 0.7;
 
   /* ── Liquid glass ── */
   /* Camada 1: tint lime para identidade visual própria
@@ -1101,3 +1102,223 @@ body {
   cursor: not-allowed; margin-bottom: 6px;
 }
 .viz-disabled-note { text-align: center; font-size: 11px; color: var(--text-muted); }
+
+
+/* =====================================================================
+   MOBILE DEFAULTS — app-main e sidebar
+   ===================================================================== */
+
+/* app-main é um wrapper transparente no mobile — preserva o comportamento atual */
+.app-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* Sidebar oculta no mobile */
+.sidebar { display: none; }
+
+
+/* =====================================================================
+   DESKTOP LAYOUT — ≥ 768px
+   ===================================================================== */
+@media (min-width: 768px) {
+
+  /* Reset de overflow: o desktop tem scroll normal */
+  html, body {
+    overflow: auto;
+    height: 100%;
+    touch-action: auto;
+  }
+  #root { height: 100%; }
+
+  /* ── App shell: linha em vez de coluna ── */
+  .app {
+    max-width: 1440px;
+    height: 100vh;
+    height: 100dvh;
+    flex-direction: row;
+    border: none;
+    border-radius: 0;
+    background: var(--bg);
+    /* Mantém o centramento em telas muito largas */
+    margin: 0 auto;
+    box-shadow: none;
+  }
+
+  /* Remove o gradiente de lime do fundo (era só para o glass mobile) */
+  .app::after { display: none; }
+
+  /* ── app-main: coluna dentro da linha ── */
+  .app-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-height: 0;
+    background: var(--bg);
+  }
+
+  /* ── Esconde elementos exclusivos do mobile ── */
+  .header      { display: none; }
+  .bottom-nav  { display: none !important; }
+
+  /* ── Página com padding desktop ── */
+  .page {
+    padding: 40px 48px 48px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  /* ── Grids expandidos ── */
+  .product-grid         { grid-template-columns: repeat(3, 1fr); }
+  .rec-grid             { grid-template-columns: repeat(3, 1fr); }
+  .setup-grid           { grid-template-columns: repeat(4, 1fr); }
+
+  /* ============ SIDEBAR ============ */
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 230px;
+    flex-shrink: 0;
+    height: 100%;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    padding: 28px 16px 24px;
+    position: relative;
+    z-index: 10;
+  }
+
+  /* Logo */
+  .sidebar-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 8px 28px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 16px;
+  }
+  .sidebar-logo-icon {
+    width: 34px; height: 34px;
+    background: var(--cyan);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    box-shadow: var(--shadow-card);
+  }
+  .sidebar-logo-text {
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: -0.4px;
+    color: var(--text);
+  }
+
+  /* Nav items */
+  .sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+  }
+
+  .sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 12px;
+    border-radius: 12px;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    font-family: var(--font);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    text-align: left;
+    width: 100%;
+    transition: background 0.15s, color 0.15s;
+    position: relative;
+    isolation: isolate;
+  }
+  .sidebar-item:hover {
+    background: var(--surface-2);
+    color: var(--text);
+  }
+
+  /* Item ativo — bolha liquid glass */
+  .sidebar-item.active {
+    color: var(--text);
+    font-weight: 600;
+    background: linear-gradient(
+      135deg,
+      rgba(212, 245, 78, 0.22) 0%,
+      rgba(212, 245, 78, 0.10) 100%
+    );
+    border: 1px solid rgba(212, 245, 78, 0.40);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.7),
+      0 2px 8px rgba(212, 245, 78, 0.15);
+  }
+
+  .sidebar-item-icon {
+    width: 20px; height: 20px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .sidebar-item-icon svg { width: 20px; height: 20px; }
+  .sidebar-item-label { flex: 1; }
+
+  /* Footer do sidebar */
+  .sidebar-footer {
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .sidebar-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px;
+    border-radius: 10px;
+    background: var(--surface-2);
+  }
+  .sidebar-avatar {
+    width: 32px; height: 32px;
+    border-radius: 9px;
+    background: var(--cyan);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700;
+    color: var(--text);
+    flex-shrink: 0;
+  }
+  .sidebar-user-email {
+    font-size: 11px;
+    color: var(--text-muted);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1;
+  }
+
+  .sidebar-logout {
+    width: 100%;
+    padding: 9px;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    background: var(--red-dim);
+    color: var(--red);
+    font-family: var(--font);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: border-color 0.15s;
+    text-align: center;
+  }
+  .sidebar-logout:hover { border-color: var(--red); }
+
+} /* fim @media desktop */

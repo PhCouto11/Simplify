@@ -7,6 +7,7 @@ import Loja from './pages/Loja'
 import Setups from './pages/Setups'
 import Auth from './pages/Auth'
 import SmartCompare from './components/SmartCompare'
+import Sidebar from './components/Sidebar'
 
 // ─── Default setups structure ───
 const DEFAULT_SETUPS = { work: [], gaming: [], travel: [], studio: [] }
@@ -138,45 +139,51 @@ export default function App() {
 
   return (
     <div className="app">
-      <Header title={titles[page] || 'Simplify'} user={user} onLogout={handleLogout} />
+      {/* Desktop sidebar — oculto no mobile via CSS */}
+      <Sidebar active={page} onChange={setPage} user={user} onLogout={handleLogout} />
 
-      {page === 'home' && (
-        <Home
-          wishlist={wishlist}
-          toggleOwned={toggleOwned}
-          toggleWishlist={toggleWishlist}
-          removeFromWishlist={removeFromWishlist}
-          goToLoja={() => setPage('loja')}
+      {/* Wrapper que contém header + conteúdo + nav */}
+      <div className="app-main">
+        <Header title={titles[page] || 'Simplify'} user={user} onLogout={handleLogout} />
+
+        {page === 'home' && (
+          <Home
+            wishlist={wishlist}
+            toggleOwned={toggleOwned}
+            toggleWishlist={toggleWishlist}
+            removeFromWishlist={removeFromWishlist}
+            goToLoja={() => setPage('loja')}
+          />
+        )}
+
+        {page === 'loja' && (
+          <Loja
+            wishlist={wishlist}
+            toggleWishlist={toggleWishlist}
+          />
+        )}
+
+        {page === 'setups' && (
+          <Setups
+            setups={setups}
+            wishlist={wishlist}
+            onAddProduct={addProductToSetup}
+            onRemoveProduct={removeProductFromSetup}
+          />
+        )}
+
+        {page === 'comparador' && (
+          <div className="page" style={{ padding: 0, background: '#f8f8f6' }}>
+            <SmartCompare />
+          </div>
+        )}
+
+        <BottomNav
+          active={page}
+          onChange={setPage}
+          wishlistCount={Object.keys(wishlist).length}
         />
-      )}
-
-      {page === 'loja' && (
-        <Loja
-          wishlist={wishlist}
-          toggleWishlist={toggleWishlist}
-        />
-      )}
-
-      {page === 'setups' && (
-        <Setups
-          setups={setups}
-          wishlist={wishlist}
-          onAddProduct={addProductToSetup}
-          onRemoveProduct={removeProductFromSetup}
-        />
-      )}
-
-      {page === 'comparador' && (
-        <div className="page" style={{ padding: 0, background: '#f8f8f6' }}>
-          <SmartCompare />
-        </div>
-      )}
-
-<BottomNav
-        active={page}
-        onChange={setPage}
-        wishlistCount={Object.keys(wishlist).length}
-      />
+      </div>
     </div>
   )
 }
