@@ -86,7 +86,7 @@ body {
   max-width: 520px;
   margin: 0 auto;
   height: 100vh;
-  height: 100dvh;           /* viewport dinâmico — exclui barra do browser */
+  height: 100dvh;
   height: -webkit-fill-available;
   display: flex;
   flex-direction: column;
@@ -95,6 +95,24 @@ body {
   background: var(--bg);
   border-left: 1px solid var(--border);
   border-right: 1px solid var(--border);
+}
+
+/* Gradiente fixo no fundo do app — garante que o glass sempre tenha
+   algo para blur independente de qual aba está ativa */
+.app::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 130px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(212, 245, 78, 0.05) 35%,
+    rgba(212, 245, 78, 0.14) 70%,
+    rgba(190, 230, 40,  0.20) 100%
+  );
+  pointer-events: none;
+  z-index: 90;              /* abaixo da nav (z-index: 100) */
 }
 
 
@@ -774,20 +792,29 @@ body {
   z-index: 100;
 
   /* ── Liquid glass ── */
+  /* Camada 1: tint lime para identidade visual própria
+     Camada 2: branco semi-transparente por cima para o efeito cremoso */
   background:
     linear-gradient(
       180deg,
-      rgba(255,255,255,0.75) 0%,
-      rgba(255,255,255,0.60) 100%
+      rgba(255, 255, 255, 0.82) 0%,
+      rgba(245, 252, 220, 0.72) 100%   /* tint lime sutil */
     );
-  -webkit-backdrop-filter: blur(28px) saturate(180%) brightness(1.06);
-          backdrop-filter: blur(28px) saturate(180%) brightness(1.06);
+  -webkit-backdrop-filter: blur(32px) saturate(200%) brightness(1.05);
+          backdrop-filter: blur(32px) saturate(200%) brightness(1.05);
 
-  border-top: 1px solid rgba(255,255,255,0.92);
+  /* Borda superior como reflexo de luz */
+  border-top: 1.5px solid rgba(255, 255, 255, 0.95);
+
   box-shadow:
-    0 -1px 0 rgba(0,0,0,0.06),
-    inset 0 1px 0 rgba(255,255,255,0.95),
-    0 -8px 32px rgba(0,0,0,0.07);
+    /* sombra fina no topo */
+    0 -1px 0 rgba(0, 0, 0, 0.07),
+    /* brilho interno */
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.9),
+    /* sombra suave atrás da barra */
+    0 -10px 40px rgba(0, 0, 0, 0.10),
+    /* brilho lime sutil — o que torna o glass visível em qualquer fundo */
+    0 -6px 24px rgba(212, 245, 78, 0.18);
 
   /* Hardware acceleration */
   -webkit-transform: translateX(-50%) translateZ(0);
@@ -799,16 +826,16 @@ body {
 .bottom-nav::before {
   content: '';
   position: absolute;
-  top: 0; left: 8%; right: 8%;
+  top: 0; left: 5%; right: 5%;
   height: 1px;
   background: linear-gradient(
     90deg,
-    transparent 0%,
-    rgba(255,255,255,0) 8%,
-    rgba(255,255,255,0.9) 38%,
-    rgba(255,255,255,0.9) 62%,
-    rgba(255,255,255,0) 92%,
-    transparent 100%
+    transparent       0%,
+    rgba(255,255,255,0)   6%,
+    rgba(255,255,255,1)  35%,
+    rgba(255,255,255,1)  65%,
+    rgba(255,255,255,0)  94%,
+    transparent      100%
   );
   pointer-events: none;
 }
