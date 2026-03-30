@@ -7,7 +7,6 @@ import Loja from './pages/Loja'
 import Setups from './pages/Setups'
 import Auth from './pages/Auth'
 import SmartCompare from './components/SmartCompare'
-import SimplifyRedesign from './components/simplify-redesign'
 
 // ─── Default setups structure ───
 const DEFAULT_SETUPS = { work: [], gaming: [], travel: [], studio: [] }
@@ -135,7 +134,7 @@ export default function App() {
     return <Auth />
   }
 
-  const titles = { home: 'Meu Setup', loja: 'Loja', setups: 'Setups', comparador: 'Comparador', redesign: 'Monte seu Setup' }
+  const titles = { home: 'Meu Setup', loja: 'Loja', setups: 'Setups', comparador: 'Comparador' }
 
   return (
     <div className="app">
@@ -169,9 +168,7 @@ export default function App() {
 
       {page === 'comparador' && <SmartCompare />}
 
-      {page === 'redesign' && <SimplifyRedesign />}
-
-      <BottomNav
+<BottomNav
         active={page}
         onChange={setPage}
         wishlistCount={Object.keys(wishlist).length}
