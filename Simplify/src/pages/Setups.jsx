@@ -137,8 +137,49 @@ export default function Setups({ setups, onAddProduct, onRemoveProduct, wishlist
   return (
     <div className="page active">
 
-      {/* ── Minha Lista ── */}
+      {/* ── Meus Setups ── */}
       <div className="setups-page-header">
+        <h2 className="setups-title">Meus Setups</h2>
+        <p className="setups-subtitle">Organize seus produtos por contexto</p>
+      </div>
+
+      <div className="setup-grid">
+        {PRESET_SETUPS.map(setup => {
+          const colors = COLOR_MAP[setup.color]
+          const productCount = (setups[setup.id] || []).length
+
+          return (
+            <button
+              key={setup.id}
+              className="setup-card"
+              onClick={() => setSelected(setup.id)}
+              style={productCount > 0
+                ? { borderColor: colors.border, background: colors.bg }
+                : {}}
+            >
+              <div className="setup-card-icon">{setup.icon}</div>
+              <div className="setup-card-name">{setup.name}</div>
+              <div className="setup-card-desc">{setup.desc}</div>
+              <div className="setup-card-count" style={{ color: colors.text }}>
+                {productCount === 0
+                  ? 'Vazio'
+                  : `${productCount} produto${productCount > 1 ? 's' : ''}`}
+              </div>
+            </button>
+          )
+        })}
+      </div>
+
+      <div className="setups-tip">
+        <div className="setups-tip-icon">💡</div>
+        <p className="setups-tip-text">
+          Agrupe seus produtos por contexto de uso — trabalho, gaming, viagem ou estúdio.
+          Adicione produtos da sua wishlist em cada setup.
+        </p>
+      </div>
+
+      {/* ── Minha Lista ── */}
+      <div className="setups-page-header" style={{ marginTop: 32 }}>
         <h2 className="setups-title">Minha Lista</h2>
         <p className="setups-subtitle">Produtos que tenho e que quero</p>
       </div>
@@ -193,47 +234,6 @@ export default function Setups({ setups, onAddProduct, onRemoveProduct, wishlist
           </button>
         </div>
       )}
-
-      {/* ── Meus Setups ── */}
-      <div className="setups-page-header" style={{ marginTop: 32 }}>
-        <h2 className="setups-title">Meus Setups</h2>
-        <p className="setups-subtitle">Organize seus produtos por contexto</p>
-      </div>
-
-      <div className="setup-grid">
-        {PRESET_SETUPS.map(setup => {
-          const colors = COLOR_MAP[setup.color]
-          const productCount = (setups[setup.id] || []).length
-
-          return (
-            <button
-              key={setup.id}
-              className="setup-card"
-              onClick={() => setSelected(setup.id)}
-              style={productCount > 0
-                ? { borderColor: colors.border, background: colors.bg }
-                : {}}
-            >
-              <div className="setup-card-icon">{setup.icon}</div>
-              <div className="setup-card-name">{setup.name}</div>
-              <div className="setup-card-desc">{setup.desc}</div>
-              <div className="setup-card-count" style={{ color: colors.text }}>
-                {productCount === 0
-                  ? 'Vazio'
-                  : `${productCount} produto${productCount > 1 ? 's' : ''}`}
-              </div>
-            </button>
-          )
-        })}
-      </div>
-
-      <div className="setups-tip">
-        <div className="setups-tip-icon">💡</div>
-        <p className="setups-tip-text">
-          Agrupe seus produtos por contexto de uso — trabalho, gaming, viagem ou estúdio.
-          Adicione produtos da sua wishlist em cada setup.
-        </p>
-      </div>
 
       <div style={{ height: 8 }} />
     </div>
