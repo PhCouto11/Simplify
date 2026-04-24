@@ -14,7 +14,7 @@ export const PRODUCTS = [
     id: 's1', cat: 'smartphone', brand: 'Apple', name: 'iPhone 16 Pro Max 256GB',
     price: 11299, emoji: '📱', badge: 'popular',
     desc: 'Chip A18 Pro, tela Super Retina XDR 6.9" ProMotion, câmera 48MP zoom 5x, titânio',
-    img: 'https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=400&q=80',
+    img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone16promax-naturaltitanium-select?wid=400&hei=400&fmt=jpeg&qlt=90',
     variants: [
       { key: '256gb', label: '256 GB', price: 11299 },
       { key: '512gb', label: '512 GB', price: 12799 },
@@ -25,7 +25,7 @@ export const PRODUCTS = [
     id: 's2', cat: 'smartphone', brand: 'Apple', name: 'iPhone 16 Pro 128GB',
     price: 9299, emoji: '📱', badge: 'popular',
     desc: 'Chip A18 Pro, tela 6.3" ProMotion, câmera 48MP, Action Button e USB-C 3.2',
-    img: 'https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=400&q=80',
+    img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone16pro-naturaltitanium-select?wid=400&hei=400&fmt=jpeg&qlt=90',
     variants: [
       { key: '128gb', label: '128 GB', price: 9299 },
       { key: '256gb', label: '256 GB', price: 10299 },
@@ -36,7 +36,7 @@ export const PRODUCTS = [
     id: 's3', cat: 'smartphone', brand: 'Apple', name: 'iPhone 16 Plus 128GB',
     price: 7799, emoji: '📱', badge: null,
     desc: 'Tela Super Retina XDR 6.7", chip A18, câmera dupla 48MP e bateria de 2 dias',
-    img: 'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=400&q=80',
+    img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone16-finish-select-202409-pink?wid=400&hei=400&fmt=jpeg&qlt=90',
     variants: [
       { key: '128gb', label: '128 GB', price: 7799 },
       { key: '256gb', label: '256 GB', price: 8799 },
@@ -47,7 +47,7 @@ export const PRODUCTS = [
     id: 's4', cat: 'smartphone', brand: 'Apple', name: 'iPhone 16 128GB',
     price: 6799, emoji: '📱', badge: 'popular',
     desc: 'Chip A18, câmera 48MP com modo Câmera de Vídeo, Dynamic Island e USB-C',
-    img: 'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=400&q=80',
+    img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone16-finish-select-202409-ultramarine?wid=400&hei=400&fmt=jpeg&qlt=90',
     variants: [
       { key: '128gb', label: '128 GB', price: 6799 },
       { key: '256gb', label: '256 GB', price: 7799 },
@@ -58,7 +58,7 @@ export const PRODUCTS = [
     id: 's5', cat: 'smartphone', brand: 'Apple', name: 'iPhone 15 Pro Max 256GB',
     price: 8499, emoji: '📱', badge: 'oferta',
     desc: 'Chip A17 Pro, titânio, câmera 48MP com zoom 5x — excelente custo-benefício',
-    img: 'https://images.unsplash.com/photo-1678685888221-cda773a3dcdb?auto=format&fit=crop&w=400&q=80',
+    img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone15promax-naturaltitanium-select?wid=400&hei=400&fmt=jpeg&qlt=90',
     variants: [
       { key: '256gb', label: '256 GB', price: 8499 },
       { key: '512gb', label: '512 GB', price: 9999 },
@@ -68,7 +68,7 @@ export const PRODUCTS = [
     id: 's6', cat: 'smartphone', brand: 'Apple', name: 'iPhone 15 128GB',
     price: 5299, emoji: '📱', badge: 'oferta',
     desc: 'Chip A16 Bionic, Dynamic Island, câmera 48MP e USB-C',
-    img: 'https://images.unsplash.com/photo-1678685888221-cda773a3dcdb?auto=format&fit=crop&w=400&q=80',
+    img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone15-pink-select-202309?wid=400&hei=400&fmt=jpeg&qlt=90',
     variants: [
       { key: '128gb', label: '128 GB', price: 5299 },
       { key: '256gb', label: '256 GB', price: 6299 },
@@ -78,7 +78,7 @@ export const PRODUCTS = [
     id: 's7', cat: 'smartphone', brand: 'Apple', name: 'iPhone 14 128GB',
     price: 4299, emoji: '📱', badge: 'oferta',
     desc: 'Chip A15 Bionic, tela 6.1" OLED, câmera dupla 12MP, detecção de acidente',
-    img: 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=400&q=80',
+    img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone14-select-202209?wid=400&hei=400&fmt=jpeg&qlt=90',
     variants: [
       { key: '128gb', label: '128 GB', price: 4299 },
       { key: '256gb', label: '256 GB', price: 5299 },
@@ -88,7 +88,7 @@ export const PRODUCTS = [
     id: 's8', cat: 'smartphone', brand: 'Apple', name: 'iPhone SE 3ª geração 64GB',
     price: 3299, emoji: '📱', badge: 'oferta',
     desc: 'Chip A15 Bionic no menor corpo da linha Apple, 5G e Touch ID',
-    img: 'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=400&q=80',
+    img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-se-finish-select-202203?wid=400&hei=400&fmt=jpeg&qlt=90',
     variants: [
       { key: '64gb',  label: '64 GB',  price: 3299 },
       { key: '128gb', label: '128 GB', price: 3799 },
@@ -154,7 +154,7 @@ export const PRODUCTS = [
     id: 's16', cat: 'smartphone', brand: 'Samsung', name: 'Galaxy Z Fold 6 256GB',
     price: 12999, emoji: '📱', badge: 'novo',
     desc: 'Smartphone dobrável Snapdragon 8 Gen 3, tela interna 7.6" AMOLED 120Hz',
-    img: 'https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?auto=format&fit=crop&w=400&q=80',
+    img: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=400&q=80',
     variants: [
       { key: '256gb', label: '256 GB', price: 12999 },
       { key: '512gb', label: '512 GB', price: 14999 },
@@ -164,13 +164,13 @@ export const PRODUCTS = [
     id: 's17', cat: 'smartphone', brand: 'Samsung', name: 'Galaxy Z Flip 6 256GB',
     price: 6999, emoji: '📱', badge: 'novo',
     desc: 'Dobrável compacto com Snapdragon 8 Gen 3, tela externa FlexWindow 3.4" e câmera 50MP',
-    img: 'https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?auto=format&fit=crop&w=400&q=80',
+    img: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=400&q=80',
   },
   {
     id: 's18', cat: 'smartphone', brand: 'Apple', name: 'iPhone 16 Pro Max 512GB',
     price: 12799, emoji: '📱', badge: null,
     desc: 'Chip A18 Pro, 512GB de armazenamento, câmera 48MP zoom 5x e titânio grau 5',
-    img: 'https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&w=400&q=80',
+    img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone16promax-naturaltitanium-select?wid=400&hei=400&fmt=jpeg&qlt=90',
   },
 
   // ─── NOTEBOOKS ───────────────────────────────
@@ -181,7 +181,7 @@ export const PRODUCTS = [
     id: 'nb1', cat: 'notebook', brand: 'Apple', name: 'MacBook Pro 16" M4 Pro 24GB',
     price: 24999, emoji: '💻', badge: null,
     desc: 'Chip M4 Pro 14 núcleos CPU, 20 núcleos GPU, tela Liquid Retina XDR 16.2"',
-    img: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=80',
+    img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mbp16-spaceblack-select-202410?wid=400&hei=400&fmt=jpeg&qlt=90',
     variants: [
       { key: '24gb-512gb', label: '24 GB / 512 GB SSD', price: 24999 },
       { key: '24gb-1tb',   label: '24 GB / 1 TB SSD',   price: 27999 },
@@ -192,7 +192,7 @@ export const PRODUCTS = [
     id: 'nb2', cat: 'notebook', brand: 'Apple', name: 'MacBook Pro 14" M4 Pro 24GB',
     price: 20999, emoji: '💻', badge: null,
     desc: 'Chip M4 Pro, tela Liquid Retina XDR 14.2" ProMotion, até 24h de bateria',
-    img: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=80',
+    img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mbp14-spaceblack-select-202410?wid=400&hei=400&fmt=jpeg&qlt=90',
     variants: [
       { key: '24gb-512gb', label: '24 GB / 512 GB SSD', price: 20999 },
       { key: '24gb-1tb',   label: '24 GB / 1 TB SSD',   price: 23999 },
@@ -202,7 +202,7 @@ export const PRODUCTS = [
     id: 'nb3', cat: 'notebook', brand: 'Apple', name: 'MacBook Pro 14" M4 16GB',
     price: 16999, emoji: '💻', badge: 'popular',
     desc: 'Chip M4 base, tela Liquid Retina XDR 14.2", 512GB SSD e câmera 12MP Center Stage',
-    img: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=80',
+    img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mbp14-silver-select-202410?wid=400&hei=400&fmt=jpeg&qlt=90',
     variants: [
       { key: '16gb-512gb', label: '16 GB / 512 GB SSD', price: 16999 },
       { key: '24gb-1tb',   label: '24 GB / 1 TB SSD',   price: 20999 },
@@ -212,7 +212,7 @@ export const PRODUCTS = [
     id: 'nb4', cat: 'notebook', brand: 'Apple', name: 'MacBook Air 15" M3 16GB',
     price: 12999, emoji: '💻', badge: 'popular',
     desc: 'Tela Liquid Retina 15.3", chip M3, design ultrafino sem ventilador e 18h de bateria',
-    img: 'https://images.unsplash.com/photo-1611186871525-be40caa70ea5?auto=format&fit=crop&w=400&q=80',
+    img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mba15-midnight-select-202402?wid=400&hei=400&fmt=jpeg&qlt=90',
     variants: [
       { key: '16gb-256gb', label: '16 GB / 256 GB SSD', price: 12999 },
       { key: '16gb-512gb', label: '16 GB / 512 GB SSD', price: 14999 },
@@ -223,7 +223,7 @@ export const PRODUCTS = [
     id: 'nb5', cat: 'notebook', brand: 'Apple', name: 'MacBook Air 13" M3 16GB',
     price: 10999, emoji: '💻', badge: 'popular',
     desc: 'Tela Liquid Retina 13.6", chip M3, 1.24kg e desempenho excepcional sem ventilador',
-    img: 'https://images.unsplash.com/photo-1611186871525-be40caa70ea5?auto=format&fit=crop&w=400&q=80',
+    img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mba13-midnight-select-202402?wid=400&hei=400&fmt=jpeg&qlt=90',
     variants: [
       { key: '16gb-256gb', label: '16 GB / 256 GB SSD', price: 10999 },
       { key: '16gb-512gb', label: '16 GB / 512 GB SSD', price: 12999 },
@@ -236,19 +236,19 @@ export const PRODUCTS = [
     id: 'nb6', cat: 'notebook', brand: 'Dell', name: 'Dell XPS 16 i7 RTX 4060',
     price: 16999, emoji: '💻', badge: null,
     desc: 'Intel Core i7-14700H, RTX 4060 8GB, tela OLED 16" 3.2K 120Hz, 32GB RAM',
-    img: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=400&q=80',
+    img: 'https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?auto=format&fit=crop&w=400&q=80',
   },
   {
     id: 'nb7', cat: 'notebook', brand: 'Dell', name: 'Dell XPS 13 Plus i7',
     price: 10999, emoji: '💻', badge: null,
     desc: 'Intel Core i7-1360P, tela 13.4" FHD+ OLED, 16GB LPDDR5, 512GB SSD',
-    img: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=400&q=80',
+    img: 'https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?auto=format&fit=crop&w=400&q=80',
   },
   {
     id: 'nb8', cat: 'notebook', brand: 'Dell', name: 'Dell XPS 13 i5',
     price: 7999, emoji: '💻', badge: null,
     desc: 'Intel Core i5-1340P, tela 13.4" FHD+ antirreflexo, 16GB RAM, 512GB SSD',
-    img: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=400&q=80',
+    img: 'https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?auto=format&fit=crop&w=400&q=80',
   },
   {
     id: 'nb9', cat: 'notebook', brand: 'Dell', name: 'Dell Inspiron 16 Plus i7',
@@ -290,7 +290,7 @@ export const PRODUCTS = [
     id: 'nb15', cat: 'notebook', brand: 'Apple', name: 'MacBook Pro 16" M4 Max 48GB',
     price: 34999, emoji: '💻', badge: null,
     desc: 'Chip M4 Max 16 núcleos CPU, 40 núcleos GPU, 48GB unified memory — para criadores profissionais',
-    img: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=80',
+    img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mbp16-spaceblack-select-202410?wid=400&hei=400&fmt=jpeg&qlt=90',
     variants: [
       { key: '48gb-1tb', label: '48 GB / 1 TB SSD', price: 34999 },
       { key: '64gb-2tb', label: '64 GB / 2 TB SSD', price: 41999 },
@@ -300,7 +300,7 @@ export const PRODUCTS = [
     id: 'nb16', cat: 'notebook', brand: 'Dell', name: 'Dell XPS 15 i9 RTX 4070',
     price: 20999, emoji: '💻', badge: null,
     desc: 'Intel Core i9-13900H, RTX 4070 8GB, tela OLED 15.6" 3.5K 60Hz, 32GB DDR5',
-    img: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=400&q=80',
+    img: 'https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?auto=format&fit=crop&w=400&q=80',
   },
 
   // ─── TABLETS & IPADS ─────────────────────────
@@ -311,7 +311,7 @@ export const PRODUCTS = [
     id: 'tb1', cat: 'tablet', brand: 'Apple', name: 'iPad Pro 13" M4',
     price: 12499, emoji: '📱', badge: 'novo',
     desc: 'Chip M4, tela Ultra Retina XDR OLED 13" ProMotion 120Hz e Nano-texture opcional',
-    img: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=400&q=80',
+    img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/ipad-pro-finish-select-202405-13inch?wid=400&hei=400&fmt=jpeg&qlt=90',
     variants: [
       { key: '256gb-wifi',   label: '256 GB Wi-Fi',             price: 12499 },
       { key: '512gb-wifi',   label: '512 GB Wi-Fi',             price: 14999 },
@@ -322,7 +322,7 @@ export const PRODUCTS = [
     id: 'tb2', cat: 'tablet', brand: 'Apple', name: 'iPad Pro 11" M4',
     price: 9499, emoji: '📱', badge: 'novo',
     desc: 'Chip M4, tela Ultra Retina XDR OLED 11" ProMotion, o iPad mais fino da história (5.1mm)',
-    img: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=400&q=80',
+    img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/ipad-pro-finish-select-202405-11inch?wid=400&hei=400&fmt=jpeg&qlt=90',
     variants: [
       { key: '256gb-wifi', label: '256 GB Wi-Fi', price: 9499 },
       { key: '512gb-wifi', label: '512 GB Wi-Fi', price: 11499 },
@@ -332,7 +332,7 @@ export const PRODUCTS = [
     id: 'tb3', cat: 'tablet', brand: 'Apple', name: 'iPad Air 13" M3',
     price: 7499, emoji: '📱', badge: null,
     desc: 'Chip M3, tela Liquid Retina 13" 2732×2048, compatível com Apple Pencil Pro',
-    img: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=400&q=80',
+    img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/ipad-air-finish-select-202405-13inch?wid=400&hei=400&fmt=jpeg&qlt=90',
     variants: [
       { key: '128gb-wifi', label: '128 GB Wi-Fi', price: 7499 },
       { key: '256gb-wifi', label: '256 GB Wi-Fi', price: 8999 },
@@ -342,7 +342,7 @@ export const PRODUCTS = [
     id: 'tb4', cat: 'tablet', brand: 'Apple', name: 'iPad Air 11" M3',
     price: 5499, emoji: '📱', badge: 'popular',
     desc: 'Chip M3, tela Liquid Retina 11" 2360×1640, ultra-leve 462g com 10h de bateria',
-    img: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=400&q=80',
+    img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/ipad-air-finish-select-202405-11inch?wid=400&hei=400&fmt=jpeg&qlt=90',
     variants: [
       { key: '128gb-wifi', label: '128 GB Wi-Fi', price: 5499 },
       { key: '256gb-wifi', label: '256 GB Wi-Fi', price: 6999 },
@@ -352,7 +352,7 @@ export const PRODUCTS = [
     id: 'tb5', cat: 'tablet', brand: 'Apple', name: 'iPad mini 7ª geração',
     price: 4499, emoji: '📱', badge: null,
     desc: 'Chip A17 Pro, tela Liquid Retina 8.3" 2266×1488, Apple Intelligence e Apple Pencil Pro',
-    img: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=400&q=80',
+    img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/ipad-mini-finish-select-202409?wid=400&hei=400&fmt=jpeg&qlt=90',
     variants: [
       { key: '128gb-wifi', label: '128 GB Wi-Fi',          price: 4499 },
       { key: '128gb-cell', label: '128 GB Wi-Fi + Cellular', price: 5499 },
@@ -362,7 +362,7 @@ export const PRODUCTS = [
     id: 'tb6', cat: 'tablet', brand: 'Apple', name: 'iPad 10ª geração',
     price: 3499, emoji: '📱', badge: 'popular',
     desc: 'Chip A14 Bionic, tela Liquid Retina 10.9" com True Tone, Wi-Fi 6 e câmera 12MP',
-    img: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=400&q=80',
+    img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/ipad-10th-wifi-select-202210?wid=400&hei=400&fmt=jpeg&qlt=90',
     variants: [
       { key: '64gb-wifi',  label: '64 GB Wi-Fi',  price: 3499 },
       { key: '256gb-wifi', label: '256 GB Wi-Fi', price: 4999 },
@@ -403,7 +403,7 @@ export const PRODUCTS = [
     id: 'w1', cat: 'wearable', brand: 'Apple', name: 'Apple Watch Ultra 2 49mm',
     price: 7299, emoji: '⌚', badge: null,
     desc: 'Caixa de titânio 49mm, tela 2000 nits, GPS dupla frequência e até 60h de bateria',
-    img: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=80',
+    img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/apple-watch-ultra-2-case-49-titanium-natural-select-202309?wid=400&hei=400&fmt=jpeg&qlt=90',
     variants: [
       { key: 'natural', label: 'Titânio Natural', price: 7299 },
       { key: 'preto',   label: 'Titânio Preto',   price: 7299 },
@@ -413,7 +413,7 @@ export const PRODUCTS = [
     id: 'w2', cat: 'wearable', brand: 'Apple', name: 'Apple Watch Series 10 46mm',
     price: 4299, emoji: '⌚', badge: 'popular',
     desc: 'O Apple Watch mais fino, tela 30% maior, sensor ECG e detecção de apneia do sono',
-    img: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=80',
+    img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/apple-watch-series-10-case-select-202409-46?wid=400&hei=400&fmt=jpeg&qlt=90',
     variants: [
       { key: '46mm-al',  label: '46mm Alumínio', price: 4299 },
       { key: '46mm-tit', label: '46mm Titânio',  price: 5299 },
@@ -423,7 +423,7 @@ export const PRODUCTS = [
     id: 'w3', cat: 'wearable', brand: 'Apple', name: 'Apple Watch Series 10 42mm',
     price: 3899, emoji: '⌚', badge: 'popular',
     desc: 'Tela Always-On Retina, rastreamento avançado de saúde e sono, novo sensor de apneia',
-    img: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=80',
+    img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/apple-watch-series-10-case-select-202409-42?wid=400&hei=400&fmt=jpeg&qlt=90',
     variants: [
       { key: '42mm-al',  label: '42mm Alumínio', price: 3899 },
       { key: '42mm-tit', label: '42mm Titânio',  price: 4899 },
@@ -433,19 +433,19 @@ export const PRODUCTS = [
     id: 'w4', cat: 'wearable', brand: 'Apple', name: 'Apple Watch SE 2ª geração 44mm',
     price: 2899, emoji: '⌚', badge: null,
     desc: 'Chip S8, detecção de acidente, rastreamento de sono e ECG, alumínio reciclado',
-    img: 'https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=400&q=80',
+    img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/apple-watch-se-2022-case-select-44?wid=400&hei=400&fmt=jpeg&qlt=90',
   },
   {
     id: 'w5', cat: 'wearable', brand: 'Apple', name: 'Apple Watch SE 2ª geração 40mm',
     price: 2499, emoji: '⌚', badge: 'popular',
     desc: 'O Apple Watch mais acessível com os recursos essenciais de saúde e fitness',
-    img: 'https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=400&q=80',
+    img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/apple-watch-se-2022-case-select-40?wid=400&hei=400&fmt=jpeg&qlt=90',
   },
   {
     id: 'w6', cat: 'wearable', brand: 'Apple', name: 'AirTag Pack 4 unidades',
     price: 799, emoji: '🔵', badge: 'popular',
     desc: 'Rastreador preciso com chip U1 para Precision Finding e rede Find My com 1 bilhão de dispositivos',
-    img: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=400&q=80',
+    img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/airtag-4pack-select-202104?wid=400&hei=400&fmt=jpeg&qlt=90',
   },
 
   // Samsung Galaxy Watch
@@ -532,37 +532,37 @@ export const PRODUCTS = [
     id: 'a7', cat: 'audio', brand: 'Apple', name: 'AirPods Pro 2ª geração USB-C',
     price: 2099, emoji: '🎧', badge: 'popular',
     desc: 'Chip H2, ANC adaptativo 2x melhor, Transparência Adaptativa e chip U1 para Precision Finding',
-    img: 'https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?auto=format&fit=crop&w=400&q=80',
+    img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/airpods-pro-select-202409?wid=400&hei=400&fmt=jpeg&qlt=90',
   },
   {
     id: 'a8', cat: 'audio', brand: 'Apple', name: 'AirPods 4 com ANC',
     price: 1599, emoji: '🎧', badge: 'novo',
     desc: 'Novo design com ANC, chip H2, Transparência Adaptativa e case com USB-C',
-    img: 'https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?auto=format&fit=crop&w=400&q=80',
+    img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/airpods-4-select-anc-202409?wid=400&hei=400&fmt=jpeg&qlt=90',
   },
   {
     id: 'a9', cat: 'audio', brand: 'Apple', name: 'AirPods 4',
     price: 1199, emoji: '🎧', badge: 'popular',
     desc: 'Novo design refeito de base, chip H2, som personalizado e até 30h com o case',
-    img: 'https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?auto=format&fit=crop&w=400&q=80',
+    img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/airpods-4-select-202409?wid=400&hei=400&fmt=jpeg&qlt=90',
   },
   {
     id: 'a10', cat: 'audio', brand: 'Apple', name: 'AirPods 3ª geração',
     price: 899, emoji: '🎧', badge: 'oferta',
     desc: 'Audio espacial, resistência à água IPX4 e carregamento MagSafe — ótimo custo-benefício',
-    img: 'https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?auto=format&fit=crop&w=400&q=80',
+    img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/airpods-3rd-gen-select?wid=400&hei=400&fmt=jpeg&qlt=90',
   },
   {
     id: 'a11', cat: 'audio', brand: 'Apple', name: 'AirPods Max USB-C Midnight',
     price: 4799, emoji: '🎧', badge: null,
     desc: 'Over-ear premium com ANC adaptativo, Audio Espacial Personalizado e chip H2',
-    img: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=80',
+    img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/airpods-max-select-202409-midnight?wid=400&hei=400&fmt=jpeg&qlt=90',
   },
   {
     id: 'a12', cat: 'audio', brand: 'Apple', name: 'HomePod 2ª geração',
     price: 2699, emoji: '🔊', badge: null,
     desc: 'Chip S9, som 360° com Beamforming, Spatial Audio, Matter Hub e sensor de temperatura',
-    img: 'https://images.unsplash.com/photo-1543512214-318c7553f230?auto=format&fit=crop&w=400&q=80',
+    img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/homepod-select-202301-white?wid=400&hei=400&fmt=jpeg&qlt=90',
   },
 
   // ─── MONITORES ────────────────────────────────
@@ -791,31 +791,31 @@ export const PRODUCTS = [
     id: 'p8', cat: 'periferico', brand: 'Apple', name: 'Magic Keyboard Touch ID PT',
     price: 999, emoji: '⌨️', badge: 'popular',
     desc: 'Layout português, Touch ID, teclas de baixo perfil, recarregável e Bluetooth 5.0',
-    img: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=400&q=80',
+    img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/magic-keyboard-touch-id-select-202309?wid=400&hei=400&fmt=jpeg&qlt=90',
   },
   {
     id: 'p9', cat: 'periferico', brand: 'Apple', name: 'Magic Keyboard Touch ID Numérico PT',
     price: 1199, emoji: '⌨️', badge: null,
     desc: 'Magic Keyboard com teclado numérico completo, Touch ID e layout português Brasil',
-    img: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=400&q=80',
+    img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/magic-keyboard-touch-id-select-202309-numeric?wid=400&hei=400&fmt=jpeg&qlt=90',
   },
   {
     id: 'p10', cat: 'periferico', brand: 'Apple', name: 'Magic Mouse',
     price: 699, emoji: '🖱️', badge: 'popular',
     desc: 'Surface Multi-Touch completa, gestos nativos do macOS, Bluetooth 5.0 e Lightning',
-    img: 'https://images.unsplash.com/photo-1615751072497-5f5169febe17?auto=format&fit=crop&w=400&q=80',
+    img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/magic-mouse-select?wid=400&hei=400&fmt=jpeg&qlt=90',
   },
   {
     id: 'p11', cat: 'periferico', brand: 'Apple', name: 'Magic Trackpad',
     price: 999, emoji: '🖱️', badge: null,
     desc: 'Trackpad Force Touch com Surface Multi-Touch, gestos avançados e 3D Touch',
-    img: 'https://images.unsplash.com/photo-1615751072497-5f5169febe17?auto=format&fit=crop&w=400&q=80',
+    img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/magic-trackpad-select?wid=400&hei=400&fmt=jpeg&qlt=90',
   },
   {
     id: 'p12', cat: 'periferico', brand: 'Apple', name: 'Apple Studio Display 27" 5K',
     price: 12499, emoji: '🖥️', badge: null,
     desc: 'Tela Retina 5K 27" com True Tone, câmera 12MP Center Stage, 3 USB-C e Thunderbolt 3',
-    img: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=400&q=80',
+    img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/studio-display-27-retina-5k-display?wid=400&hei=400&fmt=jpeg&qlt=90',
   },
 
   // ─── CASA INTELIGENTE ─────────────────────────
@@ -826,74 +826,74 @@ export const PRODUCTS = [
     id: 'ci1', cat: 'casa-inteligente', brand: 'Amazon', name: 'Amazon Echo Pop',
     price: 279, emoji: '🏠', badge: 'popular',
     desc: 'Alto-falante inteligente compacto com Alexa, som direcional e design semi-esférico',
-    img: 'https://images.unsplash.com/photo-1543512214-318c7553f230?auto=format&fit=crop&w=400&q=80',
+    img: 'https://m.media-amazon.com/images/I/71c7XjnDxlL._AC_SL400_.jpg',
   },
   {
     id: 'ci2', cat: 'casa-inteligente', brand: 'Amazon', name: 'Amazon Echo Dot 5ª geração',
     price: 349, emoji: '🏠', badge: 'popular',
     desc: 'Echo mais popular com som 2x mais alto que a geração anterior e sensor de temperatura',
-    img: 'https://images.unsplash.com/photo-1543512214-318c7553f230?auto=format&fit=crop&w=400&q=80',
+    img: 'https://m.media-amazon.com/images/I/71xoR7anEEL._AC_SL400_.jpg',
   },
   {
     id: 'ci3', cat: 'casa-inteligente', brand: 'Amazon', name: 'Amazon Echo Dot 5ª geração com Relógio',
     price: 449, emoji: '🏠', badge: null,
     desc: 'Echo Dot com display LED para hora, alarmes, temperatura e todo ecossistema Alexa',
-    img: 'https://images.unsplash.com/photo-1543512214-318c7553f230?auto=format&fit=crop&w=400&q=80',
+    img: 'https://m.media-amazon.com/images/I/71ABRMHWwGL._AC_SL400_.jpg',
   },
   {
     id: 'ci4', cat: 'casa-inteligente', brand: 'Amazon', name: 'Amazon Echo 4ª geração',
     price: 699, emoji: '🏠', badge: 'popular',
     desc: 'Som premium com subwoofer integrado, Zigbee Hub e Matter — controla toda sua casa',
-    img: 'https://images.unsplash.com/photo-1543512214-318c7553f230?auto=format&fit=crop&w=400&q=80',
+    img: 'https://m.media-amazon.com/images/I/716a4O4qPLL._AC_SL400_.jpg',
   },
   {
     id: 'ci5', cat: 'casa-inteligente', brand: 'Amazon', name: 'Amazon Echo Show 5 3ª geração',
     price: 699, emoji: '🏠', badge: 'popular',
     desc: 'Tela 5.5" HD com Alexa, câmera 2MP para chamadas de vídeo e modo Relógio Ambiental',
-    img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=400&q=80',
+    img: 'https://m.media-amazon.com/images/I/71e7Lc0hbbL._AC_SL400_.jpg',
   },
   {
     id: 'ci6', cat: 'casa-inteligente', brand: 'Amazon', name: 'Amazon Echo Show 8 3ª geração',
     price: 999, emoji: '🏠', badge: 'popular',
     desc: 'Tela 8" HD com câmera 13MP auto-enquadramento, som espacial e central da casa inteligente',
-    img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=400&q=80',
+    img: 'https://m.media-amazon.com/images/I/7152JzRqZdL._AC_SL400_.jpg',
   },
   {
     id: 'ci7', cat: 'casa-inteligente', brand: 'Amazon', name: 'Amazon Echo Show 10 3ª geração',
     price: 1499, emoji: '🏠', badge: null,
     desc: 'Tela 10.1" HD que gira para te seguir, câmera 13MP e hub Zigbee integrado',
-    img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=400&q=80',
+    img: 'https://m.media-amazon.com/images/I/71cHbVOVBRL._AC_SL400_.jpg',
   },
   {
     id: 'ci8', cat: 'casa-inteligente', brand: 'Amazon', name: 'Amazon Echo Show 15 2ª geração',
     price: 1999, emoji: '🏠', badge: null,
     desc: 'Tela 15.6" Full HD para a parede, chip Fire TV integrado e visual inteligente da casa',
-    img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=400&q=80',
+    img: 'https://m.media-amazon.com/images/I/71kc9HQIJGL._AC_SL400_.jpg',
   },
   {
     id: 'ci9', cat: 'casa-inteligente', brand: 'Amazon', name: 'Amazon Echo Hub',
     price: 1299, emoji: '🏠', badge: 'novo',
     desc: 'Painel tátil 8" para controlar todos os dispositivos da casa — Matter, Zigbee, Alexa',
-    img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=400&q=80',
+    img: 'https://m.media-amazon.com/images/I/61O5hH7YXUL._AC_SL400_.jpg',
   },
   {
     id: 'ci10', cat: 'casa-inteligente', brand: 'Amazon', name: 'Amazon Smart Plug',
     price: 149, emoji: '🔌', badge: 'popular',
     desc: 'Tomada inteligente com controle por voz via Alexa — agende e automatize qualquer aparelho',
-    img: 'https://images.unsplash.com/photo-1583394293214-be02f789ce72?auto=format&fit=crop&w=400&q=80',
+    img: 'https://m.media-amazon.com/images/I/61VEn8C3hhL._AC_SL400_.jpg',
   },
 
   {
     id: 'ci10b', cat: 'casa-inteligente', brand: 'Amazon', name: 'Amazon Ring Video Doorbell 4',
     price: 699, emoji: '🔔', badge: 'popular',
     desc: 'Câmera de campainha com visão em cores, detecção de movimento e integração Alexa',
-    img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=400&q=80',
+    img: 'https://m.media-amazon.com/images/I/51yxJAqjPML._AC_SL400_.jpg',
   },
   {
     id: 'ci10c', cat: 'casa-inteligente', brand: 'Amazon', name: 'Amazon Smart Bulb Branca',
     price: 89, emoji: '💡', badge: 'popular',
     desc: 'Lâmpada inteligente Wi-Fi com controle por voz via Alexa, sem hub necessário',
-    img: 'https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=400&q=80',
+    img: 'https://m.media-amazon.com/images/I/61TkwsD88PL._AC_SL400_.jpg',
   },
 
   // Google Nest
@@ -930,50 +930,50 @@ export const PRODUCTS = [
     id: 'st1', cat: 'streaming', brand: 'Amazon', name: 'Fire TV Stick Lite',
     price: 249, emoji: '📺', badge: 'popular',
     desc: 'Streaming Full HD com Alexa Voice Remote Lite, sem botões de TV — o mais acessível',
-    img: 'https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=400&q=80',
+    img: 'https://m.media-amazon.com/images/I/61DBGmovtgL._AC_SL400_.jpg',
   },
   {
     id: 'st2', cat: 'streaming', brand: 'Amazon', name: 'Fire TV Stick 4K 3ª geração',
     price: 399, emoji: '📺', badge: 'popular',
     desc: 'Streaming 4K HDR com Dolby Vision/Atmos, Wi-Fi 6, Alexa e botões de TV incluídos',
-    img: 'https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=400&q=80',
+    img: 'https://m.media-amazon.com/images/I/71NYRcYVFGL._AC_SL400_.jpg',
   },
   {
     id: 'st3', cat: 'streaming', brand: 'Amazon', name: 'Fire TV Stick 4K Max 3ª geração',
     price: 499, emoji: '📺', badge: 'popular',
     desc: 'Streaming 4K Max com Wi-Fi 6E, processador 2x mais rápido e Ambient Experience',
-    img: 'https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=400&q=80',
+    img: 'https://m.media-amazon.com/images/I/61lkd0wYvZL._AC_SL400_.jpg',
   },
   {
     id: 'st4', cat: 'streaming', brand: 'Amazon', name: 'Fire TV Cube 3ª geração',
     price: 799, emoji: '📺', badge: null,
     desc: 'Streaming 4K sem fio com Alexa hands-free embutida, Wi-Fi 6E e processador octa-core',
-    img: 'https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=400&q=80',
+    img: 'https://m.media-amazon.com/images/I/71GIBr7FHIL._AC_SL400_.jpg',
   },
   {
     id: 'st5', cat: 'streaming', brand: 'Amazon', name: 'Kindle Paperwhite 16GB',
     price: 699, emoji: '📖', badge: 'popular',
     desc: 'E-reader com tela 6.8" sem reflexo, IPX8, luz ajustável e meses de bateria',
-    img: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=400&q=80',
+    img: 'https://m.media-amazon.com/images/I/71g4M9fIeJL._AC_SL400_.jpg',
   },
   {
     id: 'st6', cat: 'streaming', brand: 'Amazon', name: 'Kindle Scribe 16GB',
     price: 1699, emoji: '📖', badge: 'novo',
     desc: 'E-reader e bloco de notas digital com tela 10.2" sem reflexo e caneta Basic incluída',
-    img: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=400&q=80',
+    img: 'https://m.media-amazon.com/images/I/61tRqnYpREL._AC_SL400_.jpg',
   },
 
   {
     id: 'st5b', cat: 'streaming', brand: 'Amazon', name: 'Kindle Paperwhite Signature Edition 32GB',
     price: 999, emoji: '📖', badge: null,
     desc: 'E-reader premium com tela 6.8" auto-ajuste de brilho, 32GB e carregamento wireless',
-    img: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=400&q=80',
+    img: 'https://m.media-amazon.com/images/I/81PQpNqNECL._AC_SL400_.jpg',
   },
   {
     id: 'st5c', cat: 'streaming', brand: 'Amazon', name: 'Kindle 11ª geração 16GB',
     price: 449, emoji: '📖', badge: 'popular',
     desc: 'O Kindle mais leve com tela 6" antirreflexo, luz frontal ajustável e semanas de bateria',
-    img: 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=400&q=80',
+    img: 'https://m.media-amazon.com/images/I/61L1sYJXJjL._AC_SL400_.jpg',
   },
 
   // Apple TV
@@ -981,13 +981,13 @@ export const PRODUCTS = [
     id: 'st7', cat: 'streaming', brand: 'Apple', name: 'Apple TV 4K 128GB Wi-Fi+Ethernet',
     price: 1299, emoji: '📺', badge: 'popular',
     desc: 'Chip A15 Bionic, streaming 4K HDR com Dolby Vision, Siri Remote e Thread HomeKit',
-    img: 'https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=400&q=80',
+    img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/apple-tv-4k-hero-202210?wid=400&hei=400&fmt=jpeg&qlt=90',
   },
   {
     id: 'st8', cat: 'streaming', brand: 'Apple', name: 'Apple TV 4K 64GB Wi-Fi',
     price: 1099, emoji: '📺', badge: null,
     desc: 'Chip A15 Bionic, streaming 4K HDR Dolby Vision, Siri Remote e integração total Apple',
-    img: 'https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=400&q=80',
+    img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/apple-tv-4k-hero-202210?wid=400&hei=400&fmt=jpeg&qlt=90',
   },
 
   // ─── MOBÍLIA ──────────────────────────────────
@@ -1085,7 +1085,7 @@ export const PRODUCTS = [
     id: 'h6', cat: 'pc', brand: 'Apple', name: 'Apple MagSafe Charger 15W USB-C',
     price: 199, emoji: '⚡', badge: 'popular',
     desc: 'Carregador MagSafe oficial com cabo USB-C 1m, até 15W no iPhone 12 ou posterior',
-    img: 'https://images.unsplash.com/photo-1583863788734-7f8e616d2c24?auto=format&fit=crop&w=400&q=80',
+    img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/MHXH3LL_A?wid=400&hei=400&fmt=jpeg&qlt=90',
   },
   {
     id: 'h7', cat: 'pc', brand: 'Elgato', name: 'Elgato Thunderbolt 4 Dock',
@@ -1103,7 +1103,7 @@ export const PRODUCTS = [
     id: 'h9', cat: 'pc', brand: 'Apple', name: 'Apple Mac Mini M4',
     price: 7999, emoji: '🖥️', badge: 'novo',
     desc: 'Desktop compacto com chip M4, até 32GB unified memory, Thunderbolt 4 e Wi-Fi 6E',
-    img: 'https://images.unsplash.com/photo-1611186871525-be40caa70ea5?auto=format&fit=crop&w=400&q=80',
+    img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mac-mini-select-202411?wid=400&hei=400&fmt=jpeg&qlt=90',
     variants: [
       { key: '16gb-256gb', label: '16 GB / 256 GB SSD', price: 7999 },
       { key: '24gb-512gb', label: '24 GB / 512 GB SSD', price: 9999 },
